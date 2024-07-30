@@ -61,14 +61,3 @@
     </button>
   </div>
 </section>
-
-<style lang="scss">
-  .extra-info-icon-container {
-    width: 3.5rem;
-    text-align: center;
-    i {
-      font-size: 1.5rem;
-      color: var(--t5e-secondary-color);
-    }
-  }
-</style>
