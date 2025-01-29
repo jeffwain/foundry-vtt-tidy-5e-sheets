@@ -1,0 +1,273 @@
+.tidy5e-sheet:is(.quadrone, .dnd5e2) {
+
+.item-table *{
+  display: flex;
+}
+.item-table-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.75rem;
+
+  /* Example code only */
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--t5e-component-card-ondefault-darker);
+}
+
+/* Table row styles */
+.item-table-header, .item-table-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+.item-table-header {
+  color: var(--t5e-color-text-oninverse-default);
+  padding: .25rem .5rem;
+  border-radius: 0.125rem;
+
+  &.innate {
+    background: linear-gradient(to right, var(--t5e-spellcasting-innate), var(--t5e-spellcasting-innate-darker));
+  }
+
+}
+
+
+.item-table-row {
+  padding: 0.125rem 0 0.125rem 0.125rem;
+  border-radius: 0.125rem;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-image: linear-gradient(to right, rgba(143, 123, 78, 0) 0%, rgba(143, 123, 78, .25) 20%, rgba(143, 123, 78, .25) 80%, rgba(143, 123, 78, 0) 100%) 0 0 1 0;
+
+
+  &.equipped {
+    background-color: var(--t5e-component-card-ondefault-default);
+  }
+  &.unidentified {
+    /* TODO: Add color */
+  }
+  &.spell:not(.equipped) {
+    .item-label, .item-context {
+      font-style: italic;
+      color: var(--t5e-color-text-ondefault-lightest);
+    }
+  }
+  &.rarity .item-use-button {
+    outline: 1px solid var(--t5e-color-gold);
+  }
+
+
+  /* TODO: Move color assignments to component */
+  &.rarity.common {
+    background: linear-gradient(to right, oklch(from var(--t5e-color-rarity-common) l c h / 0.3) 10%, transparent 50%);
+    .item-use-button {
+      border-color: var(--t5e-color-rarity-common);
+      outline-color: var(--t5e-color-rarity-common);
+    }
+  }
+  &.rarity.rare {
+    background: linear-gradient(to right, oklch(from var(--t5e-color-rarity-rare) l c h / 0.3) 10%, transparent 50%);
+    .item-use-button {
+      border-color: var(--t5e-color-rarity-rare);
+      outline-color: var(--t5e-color-rarity-rare);
+      i {
+        color: var(--t5e-color-rarity-rare);
+      }
+
+    }
+  }
+  &.rarity.uncommon {
+    background: linear-gradient(to right, oklch(from var(--t5e-color-rarity-uncommon) l c h / 0.3) 10%, transparent 50%);
+    .item-use-button {
+      border-color: var(--t5e-color-rarity-uncommon);
+      outline-color: var(--t5e-color-rarity-uncommon);
+      i {
+        color: var(--t5e-color-rarity-uncommon);
+      }
+
+    }
+  }
+  &.rarity.very-rare {
+    background: linear-gradient(to right, oklch(from var(--t5e-color-rarity-very-rare) l c h / 0.3) 10%, transparent 50%);  
+    .item-use-button {
+      border-color: var(--t5e-color-rarity-very-rare);
+      outline-color: var(--t5e-color-rarity-very-rare);
+      i {
+        color: var(--t5e-color-rarity-very-rare);
+      }
+    }
+  }
+  &.rarity.legendary {
+    background: linear-gradient(to right, oklch(from var(--t5e-color-rarity-legendary) l c h / 0.3) 10%, transparent 50%);  
+    .item-use-button {
+      border-color: var(--t5e-color-rarity-legendary);
+      outline-color: var(--t5e-color-rarity-legendary);
+      i {
+        color: var(--t5e-color-rarity-legendary);
+      }
+    }
+  }
+  &.rarity.artifact {
+    background: linear-gradient(to right, oklch(from var(--t5e-color-rarity-artifact) l c h / 0.3) 10%, transparent 50%);
+    .item-use-button {
+      border-color: var(--t5e-color-rarity-artifact);
+      outline-color: var(--t5e-color-rarity-artifact);
+      i {
+        color: var(--t5e-color-rarity-artifact);
+      }
+    }
+  }
+
+  &.spell.prepared {
+    background: linear-gradient(to right, var(--t5e-spellcasting-default), var(--t5e-spellcasting-default-darker));
+  }
+
+  &.spell.always-prepared {
+    background: linear-gradient(to right, var(--t5e-spellcasting-always-prepared), var(--t5e-spellcasting-always-prepared-darker));
+  }
+
+
+  &.spell.pact {
+    background: linear-gradient(to right, var(--t5e-spellcasting-pact), var(--t5e-spellcasting-pact-darker));
+  }
+
+
+  &.spell.at-will {
+    background: linear-gradient(to right, var(--t5e-spellcasting-at-will), var(--t5e-spellcasting-at-will-darker));
+  }
+
+
+  &.spell.ritual {
+    background: linear-gradient(to right, var(--t5e-spellcasting-ritual), var(--t5e-spellcasting-ritual-darker));
+  }
+
+
+  &.spell.innate {
+    background: linear-gradient(to right, var(--t5e-spellcasting-innate), var(--t5e-spellcasting-innate-darker));
+  }
+}
+
+
+
+/* Cell styles */
+.item-table-cell {
+  padding: 0 .5rem;
+  min-width: 80px; /* TODO: FIX */
+  align-items: center;
+  justify-content: center;
+  &:not(:last-child) {
+    border-right: 1px solid var(--t5e-table-row-divider);
+  }
+
+  &.fill {
+    flex-grow: 1;
+  }
+  
+  &.two-line {
+    flex-direction: column;
+    max-height: 1.5rem;
+    justify-content: center;
+  }
+}
+
+.item-table-button {
+  display: flex;
+  width: 1.5rem;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-use-button {
+  border-radius: 0.125rem;
+  border: 1px solid var(--t5e-color-gold);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 1.625rem;
+  width: 1.625rem;
+  transition: all var(--t5e-transition-default);
+
+
+  i {
+    grid-column: 1;
+    font-size: 1.125rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0.0625rem;
+    left: 0;
+    display: flex; /* Fix for font awesome ::before icon alignment */
+    align-items: center;
+    justify-content: center;
+    color: var(--t5e-color-text-ondefault-gold-emphasis);
+    opacity: 0;
+    transition: all var(--t5e-transition-default);
+
+  }
+  img {
+    border-radius: 0.0625rem;
+    grid-column: 1;
+    transition: all var(--t5e-transition-default);
+  }
+
+  &:hover {
+    img {
+      opacity: 0;
+    }
+    i {
+      display: flex;
+      opacity: 1;
+    }
+    background: transparent;
+  }
+}
+
+.item-table-cell {
+
+  &.item-name {
+    align-items: flex-start;
+    .item-label {
+      font-size: var(--font-size-default);
+    }
+    .item-context {
+      margin-top: -0.125rem;
+      font-size: var(--font-size-small);
+      color: var(--t5e-color-text-ondefault-lighter);
+    }
+  }
+
+  & .spell-components {
+    align-items: center;
+  }
+
+  &.item-time {
+    
+  }
+}
+
+
+
+
+
+.item-table-row-container {
+
+    &:global(.context) {
+      box-shadow: 0 0 0.1875rem 0.0625rem var(--t5e-primary-accent-color) inset;
+    }
+
+    .item-table-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      border-radius: 0.3125rem;
+
+      --t5e-item-table-row-background: transparent;
+    }
+  }
+}

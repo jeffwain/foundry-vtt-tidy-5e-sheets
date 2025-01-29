@@ -115,6 +115,95 @@
         itemDescriptions={context.itemDescriptions}
       />
     </div>
+    <fieldset class="vertical-gallery">
+      <legend> Spellcasting Table </legend>
+      <div class="item-table-container spellcasting" style="min-width: 400px;">
+        <div class="item-table">
+          <div class="item-table-header innate">
+            <div class="table-header-title fill">Innate<span class="table-header-count">3</span></div>
+          </div>
+          <div class="item-table-row spell">
+            <div class="item-table-button item-use-button">
+              <img class="item-image" alt="Spell Name" src="icons/magic/fire/projectile-fireball-smoke-orange.webp" />
+              <i class="fas fa-dice-d20"></i>
+            </div>
+            <div class="item-table-cell item-name two-line fill">
+              <div class="item-label">Fire Bolt</div>
+              <div class="item-context">V, S, M</div>
+            </div>
+            <div class="item-table-cell spell-components">
+              <ul class="unlist spell-components">
+                <li class="spell-component" data-tooltip="Verbal">V</li>
+                <li class="spell-component" data-tooltip="Somatic">S</li>
+              </ul>
+            </div>
+            <div class="item-table-cell item-time">
+              <div class="item-label">A</div>
+            </div>
+          </div>
+          <div class="item-table-row spell rarity rare">
+            <div class="item-table-button item-use-button">
+              <img class="item-image" alt="Spell Name" src="icons/magic/fire/projectile-fireball-smoke-orange.webp" />
+              <i class="fas fa-dice-d20"></i>
+            </div>
+            <div class="item-table-cell item-name two-line fill">
+              <div class="item-label">Fire Bolt</div>
+              <div class="item-context">Rare</div>
+            </div>
+            <div class="item-table-cell spell-components">
+              <ul class="unlist spell-components">
+                <li class="spell-component" data-tooltip="Somatic">S</li>
+                <li class="spell-component" data-tooltip="Material">M</li>
+                <li class="spell-component-special" data-tooltip="Concentration">C</li>
+              </ul>
+            </div>
+            <div class="item-table-cell item-time">
+              <div class="item-label">A</div>
+            </div>
+          </div>
+          <div class="item-table-row spell equipped">
+            <div class="item-table-button item-use-button">
+              <img class="item-image" alt="Spell Name" src="icons/magic/fire/projectile-fireball-smoke-orange.webp" />
+              <i class="fas fa-dice-d20"></i>
+            </div>
+            <div class="item-table-cell item-name two-line fill">
+              <div class="item-label">Fire Bolt</div>
+              <div class="item-context">Prepared</div>
+            </div>
+            <div class="item-table-cell spell-components">
+              <ul class="unlist spell-components">
+                <li class="spell-component" data-tooltip="Verbal">V</li>
+                <li class="spell-component" data-tooltip="Somatic">S</li>
+              </ul>
+            </div>
+            <div class="item-table-cell item-time">
+              <div class="item-label">A</div>
+            </div>
+          </div>
+          <div class="item-table-row spell equipped">
+            <div class="item-table-button item-use-button">
+              <img class="item-image" alt="Spell Name" src="icons/magic/fire/projectile-fireball-smoke-orange.webp" />
+              <i class="fas fa-dice-d20"></i>
+            </div>
+            <div class="item-table-cell item-name two-line fill">
+              <div class="item-label">Fire Bolt</div>
+              <div class="item-context">Prepared</div>
+            </div>
+            <div class="item-table-cell spell-components">
+              <ul class="unlist spell-components">
+                <li class="spell-component" data-tooltip="Verbal">V</li>
+                <li class="spell-component" data-tooltip="Somatic">S</li>
+                <li class="spell-component" data-tooltip="Material">M</li>
+                <li class="spell-component-special" data-tooltip="Ritual">R</li>
+              </ul>
+            </div>
+            <div class="item-table-cell item-time">
+              <div class="item-label">A</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
     <fieldset>
       <legend> Colors </legend>
       <div style="background-color: var(--t5e-color-palette-red-45); padding: 0.5rem; color:white;">
