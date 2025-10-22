@@ -127,7 +127,6 @@ export function Tidy5eActorSheetQuadroneBase<
         'actor',
         sheetType,
         CONSTANTS.SHEET_LAYOUT_QUADRONE,
-        'themed',
       ],
       window: {
         controls: [

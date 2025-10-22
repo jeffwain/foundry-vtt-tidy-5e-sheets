@@ -96,7 +96,7 @@
 
   let extraTabs = new SvelteSet<string>();
 
-  let style = "themed";
+  let style = "";
 </script>
 
 <header class="sheet-header flexcol {style === 'themed' ? 'themed theme-dark' : 'theme-standard'}">
