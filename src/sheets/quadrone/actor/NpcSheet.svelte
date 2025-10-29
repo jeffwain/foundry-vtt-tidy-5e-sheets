@@ -96,10 +96,10 @@
 
   let extraTabs = new SvelteSet<string>();
 
-  let style = "";
+  let themed = $derived(!!context.themeSettings.actorHeaderBackground);
 </script>
 
-<header class="sheet-header flexcol {style === 'themed' ? 'themed theme-dark' : 'theme-standard'}">
+<header class="sheet-header flexcol {themed ? 'theme-dark' : 'theme-parchment'}">
   <div class="sheet-header-content flexrow">
     <div class="actor-details-container flexcol">
       <div class="actor-context-row flexrow">
@@ -557,7 +557,7 @@
     />
   </div>
 </header>
-<div class="sheet-body {style} {style === 'themed' ? 'themed' : 'theme-standard'}">
+<div class="sheet-body {themed ? 'themed' : 'theme-parchment'}">
   <div class="main-content">
     <div class={['sidebar flexcol', { expanded: sidebarExpanded }]}>
       <NpcSidebar />

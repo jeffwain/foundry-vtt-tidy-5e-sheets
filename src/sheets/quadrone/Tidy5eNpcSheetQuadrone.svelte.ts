@@ -590,7 +590,13 @@ export class Tidy5eNpcSheetQuadrone extends Tidy5eActorSheetQuadroneBase(
     const element = await super._renderFrame(options);
 
     const theme = getThemeV2(this.actor);
-    element.querySelector('.window-header').classList.add(`theme-${theme}`);
+    // TODO: add a check for the themeSettings.actorHeaderBackground
+    if (true) {
+      element.querySelector('.window-header').classList.add('theme-dark');
+    }
+    else {
+      element.querySelector('.window-header').classList.add(`theme-${theme}`);
+    }
 
     return element;
   }

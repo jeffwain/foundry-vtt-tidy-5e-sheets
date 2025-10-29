@@ -1,116 +1,17 @@
 .tidy5e-sheet.application:where(.quadrone.npc) {
-
-  background: var(--t5e-component-card-darker);
   --t5e-sheet-header-bg: url(../../systems/dnd5e/ui/official/banner-npc-dark.webp);
 
-  &.actor::before {
-    // opacity: 0.2;
-    background-image: url(../../modules/tidy5e-sheet/images/texture-gray-1.webp);
-    filter: none;
-    opacity: 1;
-    mix-blend-mode: normal;
-  }
-
-  &::after {
-    background: none;
-  }
-
-  .window-content .sheet-body::before {
-    content: none;
-  }
-
-  &.themed {
-    background: var(--t5e-theme-color-default);
-
+  .window-content .sheet-body {
     &::before {
-      background-image: var(--t5e-sheet-header-bg, url(../../modules/tidy5e-sheet/images/banner-character.webp));
-      background-position: top center;
-      background-size: auto;
-      background-repeat: no-repeat;
-
-      filter: grayscale(100%);
-      mix-blend-mode: luminosity;
-      opacity: 0.4;
-      background-size: cover;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: -2;
-      width: 100%;
-      height: 18.75rem;
+      content: none;
     }
 
     &::after {
-      background: linear-gradient(to bottom, rgba(159, 146, 117, 0.5), rgb(91, 78, 49));
-      mix-blend-mode: color-burn;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-    }
-
-    .sheet-body {
-      display: flex;
-      flex: 1;
-      flex-direction: row;
-      overflow-x: hidden;
-      overflow-y: hidden;
-      position: relative;
-      z-index: 0;
-
-      background-color: var(--t5e-component-card-default);
-      background-image: url(../../modules/tidy5e-sheet/images/parchment-texture-bottom.webp);
-      background-position: bottom center;
-      background-repeat: no-repeat;
-
-      &.theme-light::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-        background-image: url(../../modules/tidy5e-sheet/images/parchment-texture-top.webp);
-        background-position: top center;
-        background-repeat: no-repeat;
-      }
-    }
-
-    &.theme-dark .sheet-body {
-      background: url(../../modules/tidy5e-sheet/images/denim065.png) top center / auto repeat,
-        var(--t5e-component-card-default);
-      background-size: auto;
-    }
-  }
-
-  .theme-standard {
-    &.sheet-header {
-      background: none;
+      background-image: url(../../modules/tidy5e-sheet/images/texture-gray-2.webp);
     }
   }
 
   .sheet-header {
-
-    .actor-name,
-    .actor-subtitle,
-    .ability .ability-save {
-      text-shadow: none;
-    }
-
-    .ability-save,
-    .ability-roll-button {
-      box-shadow: none;
-    }
-
-
     .npc-vitals {
       --t5e-npc-vitals-offset: 1.75rem;
       margin-left: var(--t5e-npc-vitals-offset);
@@ -848,36 +749,35 @@
   }
 
   &.theme-dark {
-    background: url(../../modules/tidy5e-sheet/images/denim065.png),
-      var(--t5e-component-card-dark-darker);
-    background-position: top center, center;
-    background-repeat: repeat, no-repeat;
-    background-size: auto, cover;
-
-    &::before {
-      opacity: 0.24;
+    &:not(.theme-parchment) {
+      background: url(../../modules/tidy5e-sheet/images/denim065.png),
+        var(--t5e-component-card-dark-darker);
+      background-position: top center, center;
+      background-repeat: repeat, no-repeat;
+      background-size: auto, cover;
     }
 
-    &::after {
-      background-image: url(../../modules/tidy5e-sheet/images/texture-gray-2.webp);
-      background-position: bottom center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      mix-blend-mode: normal;
-      opacity: 0.12;
-    }
+    &.theme-parchment {
+      &::before {
+        opacity: 0.24;
+      }
 
-    .sheet-body {
-      background: none;
+      &::after {
+        background-image: url(../../modules/tidy5e-sheet/images/texture-gray-2.webp);
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        mix-blend-mode: normal;
+        opacity: 0.12;
+      }
 
+      .sheet-body {
+        background: none;
+      }
     }
   }
 
   .sheet-header.theme-dark {
-    .actor-vitals-container .shield {
-      background-image: url(../../modules/tidy5e-sheet/images/badge_ac_npc_dark.svg);
-    }
-
     .abilities-container.ability-collapsed .abilities-container-inner {
 
       .ability:has(.proficient),
@@ -886,76 +786,110 @@
         outline-color: var(--t5e-color-palette-grey-11);
       }
     }
+
+    .actor-vitals-container .shield {
+      background-image: url(../../modules/tidy5e-sheet/images/badge_ac_npc_dark.svg);
+    }
   }
 
-  &.theme-light {
-    --color-text-selection: var(--t5e-color-text-oninverse-default);
-    --color-text-selection-bg: var(--t5e-theme-color-default);
-  }
 
+  &.theme-parchment {
+    background: var(--t5e-component-card-darker);
 
-
-  .sheet-header.theme-standard {
-    .initiative-container .initiative.score {
-      background-image: url(../../modules/tidy5e-sheet/images/badge_init_light.webp);
-
-      .initiative-roll-button {
-        &:hover {
-          color: var(--t5e-color-text-gold-emphasis);
-        }
-      }
-
+    &::before {
+      background-image: url(../../modules/tidy5e-sheet/images/texture-gray-1.webp);
+      filter: none;
+      opacity: 1;
+      mix-blend-mode: normal;
     }
 
-    .color-text-gold {
-      color: var(--t5e-color-text-gold-emphasis);
+    &::after {
+      background: none;
     }
 
-    .ability {
-      .ability-score {
-        background-image: url(../../modules/tidy5e-sheet/images/badge_ability_light.webp);
-        background-position: top center;
-        background-size: cover;
-        background-repeat: no-repeat;
+    .sheet-header {
+      background: none;
+
+      .actor-name,
+      .actor-subtitle,
+      .ability .ability-save {
+        text-shadow: none;
       }
 
+      .ability-save,
       .ability-roll-button {
-
-        &:hover,
-        &:active,
-        &:focus {
-          color: var(--t5e-color-text-gold-emphasis);
-        }
+        box-shadow: none;
       }
     }
 
-    .sheet-header-actions {
-      .button-gold {
-        border-color: var(--t5e-color-palette-gold-62);
-        box-shadow: var(--t5e-drop-shadow-field);
+    &.theme-light {
+      background: var(--t5e-component-card-default);
+      --color-text-selection: var(--t5e-color-text-oninverse-default);
+      --color-text-selection-bg: var(--t5e-theme-color-default);
 
-        i {
-          color: var(--t5e-color-palette-gold-56);
+      .sheet-header {
+        .initiative-container .initiative.score {
+          background-image: url(../../modules/tidy5e-sheet/images/badge_init_light.webp);
+
+          .initiative-roll-button {
+            &:hover {
+              color: var(--t5e-color-text-gold-emphasis);
+            }
+          }
+
         }
 
-        &:hover,
-        &:active,
-        &:focus {
-          border-color: var(--t5e-color-palette-gold-56);
-          box-shadow: var(--t5e-drop-shadow-field-hover);
+        .color-text-gold {
+          color: var(--t5e-color-text-gold-emphasis);
+        }
 
-          i {
-            color: var(--t5e-color-palette-gold-56);
+        .ability {
+          .ability-score {
+            background-image: url(../../modules/tidy5e-sheet/images/badge_ability_light.webp);
+            background-position: top center;
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+
+          .ability-roll-button {
+
+            &:hover,
+            &:active,
+            &:focus {
+              color: var(--t5e-color-text-gold-emphasis);
+            }
           }
         }
-      }
-    }
 
-    .bonus-container {
-      background-image: url(../../modules/tidy5e-sheet/images/badge_ability_light.webp);
+        .sheet-header-actions {
+          .button-gold {
+            border-color: var(--t5e-color-palette-gold-62);
+            box-shadow: var(--t5e-drop-shadow-field);
 
-      &.proficient {
-        background-image: url(../../modules/tidy5e-sheet/images/badge_ability_light_prof.webp);
+            i {
+              color: var(--t5e-color-palette-gold-56);
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+              border-color: var(--t5e-color-palette-gold-56);
+              box-shadow: var(--t5e-drop-shadow-field-hover);
+
+              i {
+                color: var(--t5e-color-palette-gold-56);
+              }
+            }
+          }
+        }
+
+        .bonus-container {
+          background-image: url(../../modules/tidy5e-sheet/images/badge_ability_light.webp);
+
+          &.proficient {
+            background-image: url(../../modules/tidy5e-sheet/images/badge_ability_light_prof.webp);
+          }
+        }
       }
     }
   }

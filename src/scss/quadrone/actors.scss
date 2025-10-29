@@ -16,10 +16,6 @@
     min-width: 43.75rem;
   }
 
-  // ::selection {
-  //   background-color: var(--t5e-theme-color-default);
-  // }
-
   &::before {
     background-image: var(--t5e-sheet-header-bg, url(../../modules/tidy5e-sheet/images/banner-character.webp));
     background-position: top center;
@@ -102,9 +98,6 @@
       z-index: 0;
 
       background-color: var(--t5e-component-card-default);
-      background-image: url(../../modules/tidy5e-sheet/images/parchment-texture-bottom.webp);
-      background-position: bottom center;
-      background-repeat: no-repeat;
 
       &::before {
         content: '';
@@ -118,17 +111,14 @@
         background-position: top center;
         background-repeat: no-repeat;
       }
-    }
 
-    .main-content {
-      display: flex;
-      flex: 1;
-      flex-direction: row;
-      overflow: hidden;
 
 
       &::after {
         content: '';
+        background-image: url(../../modules/tidy5e-sheet/images/parchment-texture-bottom.webp);
+        background-position: bottom center;
+        background-repeat: no-repeat;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -136,6 +126,13 @@
         right: 0;
         z-index: -1;
       }
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      overflow: hidden;
 
 
       >.sidebar {
@@ -2744,21 +2741,26 @@
   @import './character-parts/tab-effects.scss';
   @import './character-parts/tab-biography.scss';
 
-  &.theme-dark,
-  .theme-dark {
+  &.theme-dark {
     --t5e-color-gold: var(--t5e-color-palette-gold-45);
+
+    background-color: var(--t5e-theme-color-default);
 
     .actor-warnings-control::before,
     dialog.warnings .warning::before {
       color: var(--t5e-color-yellow);
     }
 
-    .sheet-body {
+    &.sheet .sheet-body {
       background: url(../../modules/tidy5e-sheet/images/denim065.png) top center / auto repeat,
         var(--t5e-component-card-dark-darker);
       background-size: auto;
 
       &::before {
+        content: none;
+      }
+
+      &::after {
         content: none;
       }
     }
