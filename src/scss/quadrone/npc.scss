@@ -452,11 +452,11 @@
       i {
         font-size: var(--font-size-12);
         margin-right: 0.1875rem;
-        color: var(--t5e-color-icon-disabled);
+        color: var(--t5e-color-icon-button);
       }
     }
 
-    h3.bordered {
+    h4.bordered {
       border-bottom: 0.0625rem solid var(--t5e-color-gold);
       padding: 0.25rem 0;
       margin-bottom: 0.25rem;
@@ -557,6 +557,10 @@
 
     .lair-initiative {
       gap: var(--t5e-size-2x);
+
+      >* {
+        line-height: var(--font-size-20);
+      }
     }
 
     .button i {
