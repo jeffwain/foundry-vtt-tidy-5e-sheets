@@ -36,6 +36,7 @@ import UserPreferencesService from 'src/features/user-preferences/UserPreference
 import { isNil } from 'src/utils/data';
 import { ItemContext } from 'src/features/item/ItemContext';
 import { debug } from 'src/utils/logging';
+import { ThemeQuadrone } from 'src/theme/theme-quadrone.svelte';
 
 export class Tidy5eNpcSheetQuadrone extends Tidy5eActorSheetQuadroneBase(
   CONSTANTS.SHEET_TYPE_NPC
@@ -586,17 +587,44 @@ export class Tidy5eNpcSheetQuadrone extends Tidy5eActorSheetQuadroneBase(
   /*  Life-Cycle Handlers                         */
   /* -------------------------------------------- */
 
+
+  _updateFrame(options: TidyDocumentSheetRenderOptions) {
+    options ??= {};
+
+    const theme = getThemeV2(this.actor);
+    const themeSettings = ThemeQuadrone.getSheetThemeSettings({
+      doc: this.actor,
+    });
+    const windowHeader = this.element.querySelector('.window-header');
+
+    console.log(theme);
+    console.log(themeSettings);
+    if (!windowHeader) {
+      super._updateFrame(options);
+      return;
+    }
+    
+    // Remove all classes that start with 'theme-'
+    const classes = Array.from(windowHeader.classList) as string[];
+    classes
+      .filter(cls => cls.startsWith('theme-'))
+      .forEach(cls => windowHeader.classList.remove(cls));
+
+    if (themeSettings.actorHeaderBackground) {
+      windowHeader.classList.add(`theme-dark`);
+    } else { 
+
+      windowHeader.classList.add(`theme-${theme}`);
+      this.element.classList.add('theme-parchment');
+    }
+    
+    super._updateFrame(options);
+  }
+
   async _renderFrame(options: TidyDocumentSheetRenderOptions) {
     const element = await super._renderFrame(options);
 
-    const theme = getThemeV2(this.actor);
-    // TODO: add a check for the themeSettings.actorHeaderBackground
-    if (true) {
-      element.querySelector('.window-header').classList.add('theme-dark');
-    }
-    else {
-      element.querySelector('.window-header').classList.add(`theme-${theme}`);
-    }
+    element.querySelector('.window-header').classList.add('theme-dark');
 
     return element;
   }

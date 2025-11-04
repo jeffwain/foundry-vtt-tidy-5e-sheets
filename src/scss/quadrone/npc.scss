@@ -112,7 +112,7 @@
         bottom: -0.375rem;
         text-align: center;
         align-items: center;
-        background-image: url(../../modules/tidy5e-sheet/images/badge_ac_npc_light.svg);
+        background-image: url(../../modules/tidy5e-sheet/images/badge_ac_npc_dark.svg);
 
         .button-config {
           position: absolute;
@@ -786,10 +786,6 @@
         outline-color: var(--t5e-color-palette-grey-11);
       }
     }
-
-    .actor-vitals-container .shield {
-      background-image: url(../../modules/tidy5e-sheet/images/badge_ac_npc_dark.svg);
-    }
   }
 
 
@@ -881,6 +877,10 @@
               }
             }
           }
+        }
+
+        .actor-vitals-container .shield {
+          background-image: url(../../modules/tidy5e-sheet/images/badge_ac_npc_light.svg);
         }
 
         .bonus-container {
