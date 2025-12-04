@@ -177,6 +177,7 @@ export const CONSTANTS = {
   TAB_VEHICLE_CARGO: 'cargo',
   TAB_VEHICLE_CREW: 'crew',
   TAB_VEHICLE_DESCRIPTION_LEGACY: 'biography',
+  TAB_VEHICLE_PASSENGERS_AND_CREW: 'passengers-and-crew',
   TAB_WORLD_SETTINGS_CHARACTER: 'world-settings-character',
   TAB_WORLD_SETTINGS_CUSTOM_SECTIONS: 'world-settings-custom-sections',
   TAB_WORLD_SETTINGS_EXHAUSTION: 'world-settings-exhaustion',
@@ -500,7 +501,7 @@ export const CONSTANTS = {
   },
   WIKI_LINK: 'https://github.com/kgar/foundry-vtt-tidy-5e-sheets/wiki',
   WIKI_LINK_CHANGE_ALL_SHEETS_GUIDE:
-    'https://github.com/kgar/foundry-vtt-tidy-5e-sheets/wiki/Using-Tidy5e#set-the-default-for-all-sheets',
+    'https://github.com/kgar/foundry-vtt-tidy-5e-sheets/wiki/1.-Getting-Started#set-the-default-for-all-sheets',
   WIKI_LINK_CHANGE_SHEET_GUIDE:
-    'https://github.com/kgar/foundry-vtt-tidy-5e-sheets/wiki/Using-Tidy5e#change-an-existing-sheet-to-tidy',
+    'https://github.com/kgar/foundry-vtt-tidy-5e-sheets/wiki/1.-Getting-Started#change-an-existing-sheet-to-tidy',
 } as const;
