@@ -189,6 +189,16 @@
           </div>
         </div>
       {/if}
+
+      <ThemeSettingColorFormGroupQuadrone
+        key="header-color"
+        bind:value={context.value.headerColor}
+        label={localize('TIDY5E.ThemeSettings.HeaderColor.title')}
+        placeholder={placeholders?.value.headerColor}
+      />
+      <p class="hint">
+        {localize('TIDY5E.ThemeSettings.HeaderColor.hint')}
+      </p>
     {/if}
 
     <!-- TODO: Add item sidebar background setting -->
