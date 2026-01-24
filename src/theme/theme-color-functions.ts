@@ -41,7 +41,7 @@ export type ContrastLevel = 'body' | 'large' | 'headline';
 export type ContrastResult = {
   /** The original color value provided */
   originalColor: string;
-  /** The final color value (adjusted if needed) */
+  /** The final color value in rgb() format (adjusted if needed) */
   color: string;
   /** The theme class to apply ('theme-light' or 'theme-dark') */
   themeClass: typeof THEME_CLASS_LIGHT | typeof THEME_CLASS_DARK;
@@ -200,10 +200,14 @@ function adjustColorForContrast(
         : chroma.lch(adjustedL, reducedChroma, h);
     }
 
-    return adjustedColor.hex();
+    return adjustedColor.css('rgb');
   } catch {
-    // If adjustment fails, return original
-    return color;
+    // If adjustment fails, return original as rgba
+    try {
+      return chroma(color).css('rgb');
+    } catch {
+      return color;
+    }
   }
 }
 
@@ -258,7 +262,7 @@ export function getColorWithContrast(
   if (passesContrast || !autoAdjust) {
     return {
       originalColor: color,
-      color: chroma(color).hex(),
+      color: chroma(color).css('rgb'),
       themeClass,
       textColor,
       contrastLc,

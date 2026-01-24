@@ -7,6 +7,7 @@ import type {
 } from './theme-quadrone.types';
 import { formatResourcePathForCss } from 'src/utils/path';
 import { getColorWithContrast } from './theme-color-functions';
+import { debug } from 'src/utils/logging';
 
 export class ThemeStylesProvider {
   static create(
@@ -24,6 +25,12 @@ export class ThemeStylesProvider {
         idOverride
       ),
       ...this.getActorHeaderBackgroundDeclarations(
+        selectorPrefix,
+        settings,
+        doc,
+        idOverride
+      ),
+      ...this.getSheetAccentColorDeclarations(
         selectorPrefix,
         settings,
         doc,
@@ -83,20 +90,20 @@ export class ThemeStylesProvider {
     ];
   }
 
-  static getSheetAccentColorDeclarations(
+  static getHeaderBackgroundColorDeclarations(
     selectorPrefix: string,
     settings: ThemeSettingsV3,
     doc: any | undefined,
     idOverride?: string
   ): ThemeQuadroneStyleDeclaration[] {
-    console.log('Accent check', getColorWithContrast(settings.sheetAccentColor));
+    debug('Header background color check', getColorWithContrast(settings.headerBackgroundColor));
 
-    if (isNil(settings.sheetAccentColor, '')) {
+    if (isNil(settings.headerBackgroundColor, '')) {
       return [];
     }
 
     const identifierRule = this.getDeclarationKeyRule(
-      'sheetAccentColor',
+      'headerBackgroundColor',
       doc,
       idOverride
     );
@@ -107,8 +114,8 @@ export class ThemeStylesProvider {
         ruleset: [
           identifierRule,
           {
-            property: '--t5e-sheet-accent-color-default',
-            value: settings.sheetAccentColor,
+            property: '--t5e-theme-color-header',
+            value: settings.headerBackgroundColor,
           },
         ],
       },

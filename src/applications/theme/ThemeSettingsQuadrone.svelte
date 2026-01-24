@@ -192,12 +192,12 @@
 
       <ThemeSettingColorFormGroupQuadrone
         key="sheet-accent-color"
-        bind:value={context.value.sheetAccentColor}
-        label={localize('TIDY5E.ThemeSettings.SheetAccentColor.title')}
-        placeholder={placeholders?.value.sheetAccentColor}
+        bind:value={context.value.headerBackgroundColor}
+        label={localize('TIDY5E.ThemeSettings.HeaderBackgroundColor.title')}
+        placeholder={placeholders?.value.headerBackgroundColor}
       />
       <p class="hint">
-        {localize('TIDY5E.ThemeSettings.SheetAccentColor.hint')}
+        {localize('TIDY5E.ThemeSettings.HeaderBackgroundColor.hint')}
       </p>
     {/if}
 

@@ -59,7 +59,7 @@ export class ThemeQuadrone {
       accentColor: '',
       useHeaderBackground: true,
       actorHeaderBackground: '',
-      sheetAccentColor: '',
+      headerBackgroundColor: '',
       itemSidebarBackground: '',
       portraitShape: undefined,
       rarityColors: {},
