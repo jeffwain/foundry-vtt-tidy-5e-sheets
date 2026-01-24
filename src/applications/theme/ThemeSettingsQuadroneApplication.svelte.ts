@@ -28,6 +28,7 @@ export type ThemeSettingsContext = {
     accentColor: string;
     useHeaderBackground: boolean;
     actorHeaderBackground: string;
+    sheetAccentColor: string;
     itemSidebarBackground: string;
     portraitShape: PortraitShape | undefined;
     rarityColors: ThemeColorSettingConfigEntry[];
@@ -47,6 +48,7 @@ export class ThemeSettingsQuadroneApplication extends SvelteApplicationMixin<Con
       accentColor: '',
       useHeaderBackground: true,
       actorHeaderBackground: '',
+      sheetAccentColor: '',
       itemSidebarBackground: '',
       portraitShape: undefined,
       rarityColors: [],
@@ -154,6 +156,7 @@ export class ThemeSettingsQuadroneApplication extends SvelteApplicationMixin<Con
         accentColor: themeSettings.accentColor,
         useHeaderBackground: themeSettings.useHeaderBackground,
         actorHeaderBackground: themeSettings.actorHeaderBackground,
+        sheetAccentColor: themeSettings.sheetAccentColor,
         itemSidebarBackground: themeSettings.itemSidebarBackground,
         portraitShape: themeSettings.portraitShape,
         rarityColors: Object.entries(CONFIG.DND5E.itemRarity).map(
@@ -204,6 +207,7 @@ export class ThemeSettingsQuadroneApplication extends SvelteApplicationMixin<Con
       accentColor: context.value.accentColor ?? '',
       useHeaderBackground: context.value.useHeaderBackground,
       actorHeaderBackground: context.value.actorHeaderBackground,
+      sheetAccentColor: context.value.sheetAccentColor,
       itemSidebarBackground: context.value.itemSidebarBackground,
       portraitShape: context.value.portraitShape,
       rarityColors: context.value.rarityColors

@@ -6,6 +6,7 @@ import type {
   ThemeQuadroneStyleRule,
 } from './theme-quadrone.types';
 import { formatResourcePathForCss } from 'src/utils/path';
+import { getColorWithContrast } from './theme-color-functions';
 
 export class ThemeStylesProvider {
   static create(
@@ -76,6 +77,38 @@ export class ThemeStylesProvider {
           {
             property: '--t5e-theme-color-default',
             value: settings.accentColor,
+          },
+        ],
+      },
+    ];
+  }
+
+  static getSheetAccentColorDeclarations(
+    selectorPrefix: string,
+    settings: ThemeSettingsV3,
+    doc: any | undefined,
+    idOverride?: string
+  ): ThemeQuadroneStyleDeclaration[] {
+    console.log('Accent check', getColorWithContrast(settings.sheetAccentColor));
+
+    if (isNil(settings.sheetAccentColor, '')) {
+      return [];
+    }
+
+    const identifierRule = this.getDeclarationKeyRule(
+      'sheetAccentColor',
+      doc,
+      idOverride
+    );
+    return [
+      {
+        identifier: `${identifierRule.property}: "${identifierRule.value}"`,
+        selector: selectorPrefix,
+        ruleset: [
+          identifierRule,
+          {
+            property: '--t5e-sheet-accent-color-default',
+            value: settings.sheetAccentColor,
           },
         ],
       },
