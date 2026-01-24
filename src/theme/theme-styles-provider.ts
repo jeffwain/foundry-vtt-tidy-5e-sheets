@@ -6,8 +6,8 @@ import type {
   ThemeQuadroneStyleRule,
 } from './theme-quadrone.types';
 import { formatResourcePathForCss } from 'src/utils/path';
-import { getColorWithContrast } from './theme-color-functions';
-import { debug } from 'src/utils/logging';
+import { getColorWithContrast, THEME_CLASS_DARK } from './theme-color-functions';
+import { debug } from 'src/utils/logging';  
 
 export class ThemeStylesProvider {
   static create(
@@ -66,31 +66,45 @@ export class ThemeStylesProvider {
     doc: any | undefined,
     idOverride?: string
   ): ThemeQuadroneStyleDeclaration[] {
-    const accentColorResult = getColorWithContrast(settings.accentColor);
-
-    debug('Accent color check', accentColorResult);
-
-
     if (isNil(settings.accentColor, '')) {
       return [];
     }
+
+    const accentColorResult = getColorWithContrast(settings.accentColor);
+
+    debug('Accent color check', accentColorResult);
 
     const identifierRule = this.getDeclarationKeyRule(
       'accentColor',
       doc,
       idOverride
     );
+
+    const ruleset: ThemeQuadroneStyleRule[] = [
+      identifierRule,
+      {
+        property: '--t5e-theme-color-default',
+        value: settings.accentColor,
+      },
+    ];
+
+    // If contrast check failed, add the adjusted color for controls
+    if (accentColorResult.wasAdjusted || !accentColorResult.passesContrast) {
+      ruleset.push({
+        property: '--t5e-color-control',
+        value: accentColorResult.color,
+      });
+      ruleset.push({
+        property: '--t5e-color-control-text',
+        value: accentColorResult.textColor,
+      });
+    }
+
     return [
       {
         identifier: `${identifierRule.property}: "${identifierRule.value}"`,
         selector: selectorPrefix,
-        ruleset: [
-          identifierRule,
-          {
-            property: '--t5e-theme-color-default',
-            value: settings.accentColor,
-          },
-        ],
+        ruleset,
       },
     ];
   }

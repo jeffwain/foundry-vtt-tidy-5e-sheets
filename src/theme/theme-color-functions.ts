@@ -6,14 +6,14 @@ import chroma from 'chroma-js';
  * - --t5e-color-palette-grey-100 (white)
  * - --t5e-color-palette-grey-0 (black)
  */
-const TEXT_COLOR_LIGHT = '#ffffff'; // --t5e-color-palette-grey-100
-const TEXT_COLOR_DARK = '#000000'; // --t5e-color-palette-grey-0
+export const TEXT_COLOR_LIGHT = '#ffffff'; // --t5e-color-palette-grey-100
+export const TEXT_COLOR_DARK = '#000000'; // --t5e-color-palette-grey-0
 
 /**
  * Theme class names to apply for light/dark text
  */
-const THEME_CLASS_LIGHT = 'theme-light';
-const THEME_CLASS_DARK = 'theme-dark';
+export const THEME_CLASS_LIGHT = 'theme-light';
+export const THEME_CLASS_DARK = 'theme-dark';
 
 /**
  * APCA (Accessible Perceptual Contrast Algorithm) minimum contrast values.
@@ -264,7 +264,7 @@ export function getColorWithContrast(
       originalColor: color,
       color: chroma(color).css('rgb'),
       themeClass,
-      textColor,
+      textColor: chroma(textColor).css('rgb'),
       contrastLc,
       wasAdjusted: false,
       passesContrast,
@@ -279,7 +279,7 @@ export function getColorWithContrast(
     originalColor: color,
     color: adjustedColor,
     themeClass,
-    textColor,
+    textColor: chroma(textColor).css('rgb'),
     contrastLc: adjustedContrastLc,
     wasAdjusted: true,
     passesContrast: adjustedContrastLc >= minContrastLc,
