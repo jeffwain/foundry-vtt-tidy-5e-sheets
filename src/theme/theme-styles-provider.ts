@@ -30,7 +30,7 @@ export class ThemeStylesProvider {
         doc,
         idOverride
       ),
-      ...this.getSheetAccentColorDeclarations(
+      ...this.getHeaderBackgroundColorDeclarations(
         selectorPrefix,
         settings,
         doc,
@@ -66,6 +66,11 @@ export class ThemeStylesProvider {
     doc: any | undefined,
     idOverride?: string
   ): ThemeQuadroneStyleDeclaration[] {
+    const accentColorResult = getColorWithContrast(settings.accentColor);
+
+    debug('Accent color check', accentColorResult);
+
+
     if (isNil(settings.accentColor, '')) {
       return [];
     }
