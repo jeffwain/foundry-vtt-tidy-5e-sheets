@@ -1,12 +1,12 @@
 .tidy5e-sheet.application:where(.quadrone.encounter) {
   --t5e-background-image: url('../../modules/tidy5e-sheet/images/banner-encounter.jpg');
-  --difficulty-diplay-size: 6rem;
+  --difficulty-display-size: 6rem;
 
   /* HEADER
   /* ------------------------------------------------------------ */
   .sheet-header {
     .actor-details-container {
-      min-height: var(--difficulty-diplay-size);
+      min-height: var(--difficulty-display-size);
       justify-content: center;
     }
 
@@ -34,8 +34,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      width: var(--difficulty-diplay-size);
-      height: var(--difficulty-diplay-size);
+      width: var(--difficulty-display-size);
+      height: var(--difficulty-display-size);
       overflow: hidden;
       text-overflow: ellipsis;
 
@@ -61,16 +61,6 @@
     &.members {
       .cr-value {
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-        }
       }
 
       .difficulty-row {
@@ -168,7 +158,6 @@
 
         .separated-list {
           display: none;
-          visibility: hidden;
         }
       }
 
@@ -192,36 +181,6 @@
       .action-combat-visibility {
         i.disabled {
           color: var(--t5e-color-text-disabled);
-        }
-      }
-    }
-
-    &:not(.inventory).tidy-table-cell {
-      &[data-tidy-column-key="qtyFormulaColumn"] {
-        input {
-          margin-top: 0.0625rem;
-          text-align: center;
-        }
-      }
-
-      .tidy-inline-quantity-tracker {
-        margin: 0 -0.25rem;
-
-        input {
-          font-size: var(--font-size-18);
-          min-width: 2.25rem;
-          max-width: 2.25rem;
-          min-height: 2.5rem;
-          margin: 0 -0.25rem;
-        }
-
-        button {
-          display: flex;
-          align-self: center;
-        }
-
-        .button-roll {
-          margin-right: -0.25rem;
         }
       }
     }

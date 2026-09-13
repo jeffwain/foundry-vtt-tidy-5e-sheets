@@ -36,16 +36,7 @@
     input[type="text"].challenge-rating-input {
       text-align: center;
       box-shadow: none;
-
-      &:focus {
-        border: 1px solid red;
-      }
     }
-  }
-
-  .ability.initiative {
-    position: relative;
-    max-width: 4rem;
   }
 
   /* Basic theme overrides
@@ -61,12 +52,6 @@
     }
   }
 
-  /* &.theme-basic .abilities-container.abilities-size-compact {
-    .initiative-score-container .ability-roll-button {
-      gap: 0.125rem;
-      margin-top: 0;
-    }
-  } */
   .abilities-container.abilities-size-compact {
     .initiative-score-container .ability-roll-button {
       gap: 0.125rem;
@@ -115,7 +100,6 @@
       flex-direction: row;
       opacity: 0;
       position: absolute;
-      transition: opacity var(--t5e-transition-duration) var(--t5e-transition-timing-function);
 
       i {
         font-size: var(--font-size-14);

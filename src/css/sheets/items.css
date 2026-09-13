@@ -1,7 +1,6 @@
 .tidy5e-sheet.application:where(.quadrone.item) {
   --sidebar-expanded-width: 9rem;
   --sidebar-width: var(--sidebar-expanded-width);
-  --sidebar-background-image-height: 31.875rem;
   --window-border-color: var(--t5e-color-gold);
   --sidebar-bg: var(--t5e-sidebar-bg, url('../../modules/tidy5e-sheet/images/sidebar-item-sheet.webp') top center / auto no-repeat,
       var(--t5e-component-card-dark-darker));
@@ -54,10 +53,6 @@
       background: var(--t5e-component-card-darker);
     }
 
-    &.theme-dark .window-header.scroll-marker-off-screen {
-      background: var(--t5e-component-card-darker);
-    }
-
     .window-header.scroll-marker-off-screen .header-over-sidebar {
       background: var(--sidebar-bg);
       background-attachment: scroll, local;
@@ -88,7 +83,6 @@
   .header-over-sidebar {
     flex-shrink: 0;
     padding-inline-start: var(--t5e-size-3x);
-    ;
     margin-inline-end: var(--t5e-size-5x);
     display: inline-flex;
     gap: var(--t5e-size-1x);
@@ -102,7 +96,6 @@
       font-family: 'Modesto Condensed';
       font-size: var(--font-font-size-18, 1.125rem);
       font-style: normal;
-      font-weight: var(--font-heading-weight-default);
       line-height: normal;
     }
 
@@ -198,14 +191,6 @@
           text-align: right;
         }
       }
-
-      .button.icon-button {
-        --size: var(--t5e-size-7x);
-
-        i {
-          font-size: 0.6875rem;
-        }
-      }
     }
 
     .pills:not(:has(.pill)) {
@@ -262,21 +247,6 @@
   }
 
   .item-rarity-container {
-    .item-rarity-selector {
-      height: var(--t5e-field-size-default);
-      padding-block-end: var(--t5e-size-1);
-      position: relative;
-
-      &:not(.none),
-      option:not(.none) {
-        color: oklch(from var(--t5e-item-color) calc(l + 0.125) c h);
-      }
-
-      option.none {
-        color: var(--t5e-color-text-default);
-      }
-    }
-
     .item-rarity-text.diminished {
       --t5e-item-color: var(--t5e-color-text-default);
     }
@@ -367,25 +337,6 @@
       color: var(--t5e-color-text-gold-emphasis);
       margin-inline-start: var(--t5e-size-1x);
     }
-
-    &:where(.theme-light) {
-      &::before {
-        background: url('../../modules/tidy5e-sheet/images/texture-gray-1.webp') no-repeat top center;
-        background-size: cover;
-      }
-
-      &::after {
-        background: url('../../modules/tidy5e-sheet/images/texture-gray-2.webp') no-repeat bottom center;
-        background-size: cover;
-      }
-    }
-
-    &:where(.theme-dark) {
-      &::before {
-        background: url('../../modules/tidy5e-sheet/images/denim075.png') repeat top center;
-        background-size: auto;
-      }
-    }
   }
 
   .item-header-summary {
@@ -409,11 +360,6 @@
       opacity: 0.5;
       background: var(--t5e-color-gold, #9f9275);
       margin-inline: var(--t5e-size-2x);
-    }
-
-    .item-type {
-      /* TODO: eliminate most of this with util classes */
-      font: var(--t5e-font-title-small);
     }
 
     .item-capacity {
@@ -475,7 +421,6 @@
       font-family: var(--t5e-font-modesto-condensed);
       font-size: var(--font-size-24);
       font-style: normal;
-      font-weight: var(--font-heading-weight-default);
       height: 2rem;
       line-height: normal;
       letter-spacing: 0.015rem;
@@ -483,15 +428,9 @@
       width: calc(100% + 1rem);
 
       &:focus {
-        transition: box-shadow none;
         box-shadow: var(--t5e-drop-shadow-field-focus);
         outline: none;
       }
-    }
-
-    &[type="text"].unidentified-name {
-      margin-block-start: var(--t5e-size-1x);
-      border-color: var(--t5e-theme-color-default);
     }
   }
 
@@ -569,13 +508,6 @@
   &.container {
     .tidy-tab.contents {
       flex: 1;
-
-      .container-contents-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: var(--t5e-size-2x);
-        flex: 1;
-      }
     }
 
     .contents-footer {
@@ -611,7 +543,6 @@
       background: none;
       text-align: left;
       justify-content: flex-start;
-      font: var(--t5e-font-body-medium);
       padding-left: 0.625rem;
       padding-top: 0.125rem;
       padding-bottom: 0.125rem;

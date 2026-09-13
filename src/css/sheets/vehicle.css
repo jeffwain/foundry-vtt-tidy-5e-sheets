@@ -15,19 +15,9 @@
   /* VEHICLE SIDEBAR
   /* ------------------------------------------------------------ */
   .sidebar {
-    gap: var(--t5e-size-2x);
-
-    > :last-child {
-      margin-bottom: var(--t5e-size-8x);
-    }
-
     h4 {
-      color: var(--t5e-color-text-lighter);
-
       i {
-        font-size: var(--font-size-12);
         margin-right: 0.1875rem;
-        color: var(--t5e-color-icon-button);
       }
     }
 

@@ -231,7 +231,6 @@
 
   /* Specific tab overrides */
   .window-content .main-content > .tidy-tab {
-    --tab-padding-left: var(--t5e-size-4x);
     flex-direction: row;
     gap: 0;
     padding: 0;
@@ -250,14 +249,6 @@
       display: flex;
       flex: 1;
       flex-direction: column;
-    }
-
-    .group-description-content {
-      padding: var(--t5e-size-2x) var(--t5e-size-4x) var(--t5e-size-3x);
-    }
-
-    .group-members-content {
-      padding: 0 0 var(--t5e-size-8x) 0;
     }
   }
 
@@ -360,7 +351,6 @@
         background-color: var(--t5e-component-card-dark-darker);
 
         .dead-overlay {
-          content: '';
           position: absolute;
           top: 0;
           left: 0;
@@ -441,11 +431,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    .group-members-content {
-      gap: var(--t5e-size-3x);
-      flex: 1;
     }
 
     .tidy-table-header-row {
@@ -672,7 +657,6 @@
     .tidy-tab.members .inspiration-badge {
       --t5e-inspiration-image-single: url('../../modules/tidy5e-sheet/images/badge_inspiration_single_light.webp');
       --t5e-inspiration-image-stacked: url('../../modules/tidy5e-sheet/images/badge_inspiration_stacked_light.webp');
-      position: relative;
     }
   }
 }

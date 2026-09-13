@@ -1659,29 +1659,4 @@
       max-width: 80rem;
     }
   }
-
-  @container actor-sheet (width < 50rem) {
-
-    &:where(.npc),
-    &:where(.vehicle) {
-      .sheet-header-content {
-        flex-wrap: wrap;
-      }
-    }
-  }
-
-  @container actor-sheet (width < 43.75rem) {
-
-    &:where(.npc),
-    &:where(.vehicle) {
-      .sheet-header .actor-vitals-container {
-        max-width: 10rem;
-
-        .actor-image img {
-          height: 10rem;
-          width: 10rem;
-        }
-      }
-    }
-  }
 }

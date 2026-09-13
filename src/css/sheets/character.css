@@ -42,10 +42,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &.stacked {
-      left: -0.25rem;
-    }
   }
 
   .ac-container {
@@ -79,7 +75,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     height: 4.25rem;
-    color: var(--t5e-color-text-light);
     font-weight: bold;
     font-size: 1.25rem;
     position: relative;
@@ -154,7 +149,7 @@
       height: auto;
       min-height: auto;
       margin-bottom: -1.25rem;
-      padding-bottom: 1.315rem;
+      padding-bottom: 1.3125rem;
       width: 100%;
 
       .label {
@@ -216,10 +211,6 @@
       right: auto;
       bottom: auto;
     }
-  }
-
-  .ability.initiative {
-    position: relative;
   }
 
   .sheet-header:has(.abilities-container.abilities-size-compact) {

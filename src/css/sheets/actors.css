@@ -192,14 +192,6 @@
     }
   }
 
-  .tidy-tab-contents {
-    &.active {
-      display: flex;
-      flex-direction: column;
-      gap: var(--t5e-size-3x);
-    }
-  }
-
   /* STYLE UTILITY CLASSES
   ------------------------------------------------------------ */
   i.highlighted {
@@ -383,10 +375,6 @@
           }
         }
 
-        .button-config {
-          margin-block-end: -var(--t5e-size-1);
-        }
-
         &.empty {
           .list-label h4 i {
             color: var(--t5e-color-icon-disabled);
@@ -476,8 +464,6 @@
 
       &:hover,
       &:focus {
-
-        .tidy-table-use-button,
         &:not(.suppressed) .effect-use-icon {
           box-shadow: 0 0 0.375rem var(--t5e-color-text-gold-emphasis);
         }
@@ -597,14 +583,6 @@
         &:is(:hover, :focus, :active) {
           text-shadow: none;
           outline: none;
-
-          .tidy-table-use-button {
-            background: transparent;
-
-            dnd5e-icon {
-              --icon-fill: transparent;
-            }
-          }
 
           .item-image {
             opacity: 0;
@@ -827,10 +805,6 @@
         &:is(.physical-bypass) {
           background-color: var(--t5e-color-palette-orange-55);
           border-color: var(--t5e-color-palette-orange-40);
-
-          i {
-            color: var(--t5e-icon-color-light);
-          }
         }
       }
     }
@@ -1152,13 +1126,6 @@
         height: var(--t5e-size-1);
         background-color: var(--t5e-component-card-default);
       }
-
-      @container tab-right-column (inline-size < 27.5rem) {
-        li {
-          flex-basis: 100%;
-          max-width: 100%;
-        }
-      }
     }
   }
 
@@ -1177,6 +1144,8 @@
       block-size: 0;
       inline-size: 0;
       border-inline: 0.1875rem solid transparent;
+      transform: translateX(-50%);
+      z-index: 1;
 
       &.encumbrance-low {
         inset-inline-start: var(--encumbrance-low);
@@ -1195,23 +1164,12 @@
         inset-block-start: 0;
         border-top: 0.1875rem solid var(--t5e-color-gold);
       }
-
-      transform: translateX(-50%);
-      z-index: 1;
     }
-  }
-
-  @container actor-sheet (width > 50rem) {
-    --header-padding: 1.5rem;
   }
 
   @container actor-sheet (width < 50rem) {
     .sheet-header-content {
       flex-wrap: wrap;
-    }
-
-    .hide-10 {
-      display: none;
     }
   }
 
@@ -1486,7 +1444,6 @@
     .sheet-body {
       background: url('../../modules/tidy5e-sheet/images/denim065.png') top center / auto repeat,
         var(--t5e-component-card-dark-darker);
-      background-size: auto;
 
       &::before {
         content: none;
