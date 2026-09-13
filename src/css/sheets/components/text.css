@@ -54,10 +54,6 @@
     }
   }
 
-  .text-secondary {
-    color: var(--t5e-color-text-lighter);
-  }
-
   .fw-normal {
     font-weight: var(--font-weight-default);
   }

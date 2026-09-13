@@ -2,14 +2,11 @@
 
   /* Quadrone-style buttons */
   :is(button, .button) {
-    --button-padding-block-start: 0.5rem;
-    --button-padding-block-end: 0.5rem;
     --button-padding-inline-start: 0.75rem;
     --button-padding-inline-end: 0.75rem;
     /* Default button styles */
     --button-background: var(--t5e-component-field-background);
     --button-background-hover: var(--t5e-component-field-background-hover);
-    --button-background-active: var(--t5e-component-field-background-active);
     --button-border: var(--t5e-component-field-border);
     --button-border-hover: var(--t5e-component-field-border-hover);
     --button-text: var(--t5e-color-text-default);
@@ -93,7 +90,6 @@
       background: var(--button-background);
       border: var(--t5e-size-1) solid var(--button-border);
       color: var(--button-text);
-      --icon-color: var(--button-icon);
 
       &:hover:not(:disabled) {
         background: var(--button-background-hover);
@@ -323,7 +319,8 @@
 
       &:active,
       &:focus,
-      &:hover &:active:hover {
+      &:hover,
+      &:active:hover {
         outline: none;
         border: 0;
         background: none;
@@ -359,7 +356,7 @@
         color: var(--t5e-color-gold);
       }
 
-      &:is(.active, :active, .attention):not(.disabled) .expand-indicator {
+      &:is(.active, :active):not(.disabled) .expand-indicator {
         color: var(--t5e-color-icon-light);
       }
     }
@@ -368,7 +365,6 @@
       margin: 0;
       padding: 0.5rem 0.75rem;
       width: fit-content;
-      padding: 0.5rem 0.75rem;
       flex-direction: column;
       gap: 0.5rem;
       background: var(--t5e-component-card-darker);
@@ -386,7 +382,6 @@
       h4 {
         color: var(--t5e-color-text-lighter);
         font-size: 0.8125rem;
-        font-weight: var(--font-heading-weight-label);
         line-height: normal;
       }
 

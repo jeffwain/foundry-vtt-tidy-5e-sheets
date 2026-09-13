@@ -9,7 +9,6 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
-      margin-inline: var(--occupant-hightlight-width);
       position: relative;
       gap: var(--t5e-size-1x);
       margin-block: var(--t5e-size-1x) var(--t5e-size-1x);
@@ -27,8 +26,6 @@
       }
 
       .broken-link-icon {
-        /* TODO: increase to 0.75? */
-        font-size: calc(var(--occupant-preview-size) * var(--t5e-size-2x));
         color: var(--t5e-warning-accent-color);
         display: inline-flex;
         align-self: center;
@@ -92,7 +89,6 @@
           vertical-align: middle;
           opacity: 0;
           color: var(--t5e-color-icon-default);
-          text-shadow: var(--t5e-drop-shadow-card);
           font-size: 1rem;
         }
       }

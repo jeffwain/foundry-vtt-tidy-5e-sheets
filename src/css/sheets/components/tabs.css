@@ -163,9 +163,6 @@
       font-weight: var(--font-weight-label);
 
       &::before {
-        background: linear-gradient(to right,
-            oklch(from var(--t5e-color-gold) l c h / .64),
-            transparent);
         opacity: 1;
       }
     }

@@ -17,7 +17,6 @@
 
   .statblock.npc {
     --statblock-color-gold: var(--t5e-color-gold, #9f9275);
-    --statblock-theme-color-default: #741b2b;
     --statblock-theme-color-darkest: oklch(from var(--t5e-theme-color-default) calc(l * 0.75) calc(c * 1.2) h);
     --statblock-weight-label: bold;
     --statblock-font-title-medium: var(--t5e-font-title-medium, 400 var(--font-size-28) 'Modesto Condensed', 'Palatino Linotype', serif);
@@ -28,7 +27,6 @@
     --statblock-text-gold: var(--t5e-color-text-gold-emphasis, #73633f);
     --statblock-column-width: 100%;
     --statblock-background: var(--t5e-component-card-default, #f8f4f1);
-    --statblock-callout: rgba(255, 255, 255, 0.48);
     --statblock-border: var(--statblock-color-gold);
     --statblock-border-thickness: var(--t5e-size-halfx);
     --statblock-dividers: var(--statblock-theme-color-darkest);
@@ -37,10 +35,8 @@
     --statblock-ability-stat-1st: rgba(0, 0, 0, 0.16);
     --statblock-ability-stat-2nd: rgba(0, 0, 0, 0.24);
     --notchSize: 0.5rem;
-    box-shadow: none;
     background: var(--statblock-color-gold);
     border: none;
-    box-shadow: 0 0 var(--statblock-border-thickness) 0 var(--statblock-color-gold);
     color: var(--statblock-text-primary);
     position: relative;
     padding-block: var(--t5e-size-3x);
@@ -117,7 +113,8 @@
     }
 
     .statblock-content {
-      display: column;
+      /* TODO: 'column' is not a valid display value - likely dead code */
+      /* display: column; */
       column-width: var(--statblock-column-width);
     }
 
@@ -289,7 +286,8 @@
 
           thead th {
             color: var(--statblock-text-secondary);
-            font: var(--statblock-font-label-small);
+            /* TODO: --statblock-font-label-small is undefined - likely dead code */
+            /* font: var(--statblock-font-label-small); */
             text-transform: initial;
 
             &.visually-hidden {

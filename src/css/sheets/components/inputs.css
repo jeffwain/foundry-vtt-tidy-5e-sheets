@@ -40,7 +40,6 @@
     &.uninput:disabled {
       border-color: transparent;
       background: transparent;
-      background-color: transparent;
       box-shadow: none;
       outline: none;
       padding: 0;
@@ -58,8 +57,6 @@
   input[type='text'],
   input[type='number'],
   textarea {
-    align-items: center;
-    display: flex;
     font-size: var(--font-size-default, 0.8666666667rem);
     font-weight: var(--font-weight-alternate, 400);
     padding-block-end: var(--t5e-size-1);
@@ -213,10 +210,6 @@
       gap: 0.375rem;
       padding-block-end: 0.0625rem;
 
-      &:hover .icon-and-input {
-        background-color: var(--t5e-component-field-background-hover);
-      }
-
       input[type='text'] {
         background: none;
         box-shadow: none;
@@ -322,17 +315,6 @@
   .checkbox {
     &:has(input:disabled:not(:checked)) {
       color: var(--t5e-color-text-lightest);
-    }
-  }
-
-  .radio-label {
-    display: flex;
-    flex-direction: column;
-    gap: var(--t5e-size-halfx);
-
-    .radio-label-subtitle {
-      color: var(--t5e-color-text-lighter);
-      font-size: var(--font-size-small);
     }
   }
 

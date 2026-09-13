@@ -2,7 +2,7 @@
   &.theme-basic {
     .collapsible-editor {
       header {
-        padding-bottom: 0.125rem;
+        padding-bottom: var(--t5e-size-halfx);
 
         &:hover {
           border-bottom-color: var(--t5e-theme-color-lighter);
@@ -34,19 +34,18 @@
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: var(--t5e-size-1x);
       transition: color var(--t5e-transition-default);
 
       .expand-indicator {
         color: var(--t5e-color-icon-disabled);
         transition: all var(--t5e-transition-default);
         font-size: 0.6875rem;
-        padding: 0.125rem 0 0 0;
+        padding: var(--t5e-size-halfx) 0 0 0;
 
         &.expanded {
           transform: rotate(90deg);
-          color: var(--t5e-color-icon-disabled);
-          padding: 0 0 0.125rem 0.25rem;
+          padding: 0 0 var(--t5e-size-halfx) var(--t5e-size-1x);
         }
       }
     }
@@ -59,9 +58,9 @@
 
     .edit {
       display: flex;
-      width: var(--font-font-size-24, 1.5rem);
-      height: var(--font-font-size-24, 1.5rem);
-      padding: 0.25rem 0.25rem 0 0.3125rem;
+      width: var(--t5e-size-6x);
+      height: var(--t5e-size-6x);
+      padding: var(--t5e-size-1x) var(--t5e-size-1x) 0 0.3125rem;
       flex-direction: column;
       justify-content: center;
       align-items: center;

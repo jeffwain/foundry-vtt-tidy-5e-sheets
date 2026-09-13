@@ -1,6 +1,5 @@
 .tidy5e-sheet.application:where(.quadrone) {
   .pips.spell-pips {
-    --pip-color: var(--t5e-color-palette-gold-89);
     --pip-border-color: var(--t5e-color-palette-gold-89);
     --pip-hover-color: var(--t5e-theme-color-lighter);
     --pip-border-hover-color: var(--t5e-color-palette-gold-94);
@@ -47,7 +46,6 @@
   }
 
   &.theme-light.theme-basic .pips.spell-pips {
-    --pip-color: var(--t5e-theme-color-default);
     --pip-border-color: var(--t5e-theme-color-default);
     --pip-hover-color: var(--t5e-theme-color-highlight);
     --pip-border-hover-color: var(--t5e-theme-color-lighter);

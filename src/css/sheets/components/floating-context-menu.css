@@ -62,27 +62,13 @@ body #context-menu.tidy5e-sheet.quadrone {
     min-height: var(--t5e-field-size-default);
     margin: var(--t5e-size-1x);
     padding: 0 var(--t5e-size-2x);
-    text-wrap-mode: wrap;
-    text-wrap: wrap;
     transition: all var(--t5e-transition-default);
     white-space: nowrap;
 
     &.active {
-      color: var(--t5e-attunement-required-color);
-
       &:hover {
         background: var(--t5e-warning-accent-color);
       }
-    }
-
-    .icon-on,
-    &.active .icon-off {
-      display: none;
-    }
-
-    .icon-off,
-    &.active .icon-on {
-      display: inline-block;
     }
 
     i,
@@ -94,7 +80,6 @@ body #context-menu.tidy5e-sheet.quadrone {
     }
 
     &:hover {
-      color: var(--t5e-component-field-text-hover);
       background: var(--t5e-component-field-background-hover);
       border: none;
       text-shadow: none;
@@ -107,8 +92,6 @@ body #context-menu.tidy5e-sheet.quadrone {
   }
 
   &.theme-dark {
-    background: var(--t5e-component-card-darker);
-
     li.context-item:hover {
       background: rgba(0, 0, 0, 1);
       --t5e-warning-accent-color: var(--t5e-color-palette-red-100);

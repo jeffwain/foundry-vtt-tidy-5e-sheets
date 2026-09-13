@@ -72,7 +72,6 @@
 
     &.wrapped {
       text-align: center;
-      flex-wrap: wrap;
     }
 
     &.no-row-gap {
@@ -89,6 +88,7 @@
 
     /* TODO: Determine if lighter text can be moved to its own scope and stylesheet and used generically */
     &.lighter {
+      --icon-fill: var(--t5e-color-text-lighter);
       font-weight: var(--font-weight-default);
 
       span,
@@ -96,8 +96,6 @@
         font-weight: var(--font-weight-default);
         color: var(--t5e-color-text-lighter);
       }
-
-      --icon-fill: var(--t5e-color-text-lighter);
     }
 
     &.negative {
@@ -211,12 +209,6 @@
     align-items: center;
     justify-content: center;
     color: var(--t5e-color-text-gold);
-  }
-
-  .effect-name {
-    display: flex;
-    flex-direction: column;
-    margin-inline-end: var(--t5e-size-1x);
   }
 
   .effect-pill-category {

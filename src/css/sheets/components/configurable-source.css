@@ -9,7 +9,6 @@
     .configure-source {
       display: flex;
       align-items: center;
-      justify-self: center;
       background: none;
       border: none;
       padding: 0;
@@ -33,7 +32,6 @@
 
   .source-text {
     color: var(--t5e-color-text-lightest, #4b4a44);
-    font: var(--t5e-font-body-medium);
     flex: 1;
     min-width: 0;
   }

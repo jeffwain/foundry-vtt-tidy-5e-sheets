@@ -8,7 +8,6 @@
       height: 1.25rem;
       position: relative;
       background-color: rgba(0, 0, 0, 0.50);
-      border: none;
       transition: background-color var(--t5e-transition-default), border-color var(--t5e-transition-default);
       border-radius: 2rem;
       border: 0.0625rem solid var(--t5e-component-field-border);
@@ -20,7 +19,7 @@
       .thumb-icon {
         background-color: var(--t5e-color-text-lighter);
         border-radius: 100%;
-        font-size: calc(0.6875rem);
+        font-size: 0.6875rem;
         position: absolute;
         color: var(--t5e-color-palette-black);
         display: flex;
@@ -66,10 +65,6 @@
           color: var(--t5e-color-palette-black);
         }
       }
-
-      &:focus-visible {
-        outline: 0.0625rem solid var(--t5e-primary-accent-color);
-      }
     }
   }
 
@@ -77,10 +72,6 @@
     button {
       margin: 0;
       padding: 0;
-    }
-
-    .tidy-switch {
-      --tidy-switch-scale: 0.875;
     }
   }
 
@@ -92,7 +83,6 @@
     --field-toggle-checked-color: var(--t5e-theme-color-foreground);
     --field-toggle-unchecked-color: var(--t5e-color-text-lightest);
     --field-toggle-unchecked-thumb-color: var(--t5e-color-text-lighter);
-    --field-toggle-checked-thumb-color: var(--t5e-theme-color-foreground);
     --width: 2rem;
     --height: 1.0625rem;
     --padding: 0.125rem;
@@ -172,11 +162,6 @@
     &:hover {
       background-color: var(--field-toggle-background-hover);
       border-color: var(--t5e-component-field-border-hover);
-
-      .unchecked-icon,
-      .thumb {
-        fill: var(--t5e-color-text-ondefault-default);
-      }
     }
 
     &.disabled {

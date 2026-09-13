@@ -46,7 +46,7 @@
     position: relative;
     isolation: isolate;
     min-height: 3.5rem;
-    filter: var(--filigree-drop-shadow, drop-shadow(0 0 var(--t5e-size-3x) var(--dnd5e-shadow-15)));
+    filter: drop-shadow(0 0 var(--t5e-size-3x) var(--dnd5e-shadow-15));
 
     .backdrop {
       --chamfer: var(--t5e-size-3x);

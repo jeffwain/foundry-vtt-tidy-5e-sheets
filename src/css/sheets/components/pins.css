@@ -44,20 +44,13 @@
       display: flex;
       flex-direction: column;
       flex: 1;
-      gap: 0.125rem;
+      gap: 0;
       justify-content: center;
-      margin-block-end: 0.5rem;
-      padding-block: 0.25rem;
-      padding-inline: 0;
-      width: 100%;
-      min-width: 0;
-    }
-
-    .pin-details {
-      padding: 0;
       margin-block: 0 0.125rem;
       margin-inline: 0;
-      gap: 0;
+      padding: 0;
+      width: 100%;
+      min-width: 0;
     }
   }
 
@@ -185,7 +178,6 @@
 
     .pips.spell-pips {
       gap: 0.1875rem;
-      --pip-color: var(--t5e-color-text-gold);
       --pip-border-color: var(--t5e-color-text-gold-emphasis);
       --pip-border-hover-color: var(--t5e-color-text-gold-emphasis);
       --pip-hover-color: var(--t5e-color-text-gold-light);
