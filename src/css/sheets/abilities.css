@@ -1,9 +1,7 @@
 .tidy5e-sheet.application:where(.quadrone) {
   .abilities-container {
     --ability-collapsed-bg: rgba(0, 0, 0, 0.24);
-    --ability-collapsed-bg-highlight: rgba(0, 0, 0, 0.56);
     --ability-collapsed-outline: oklch(from var(--t5e-color-gold) calc(l * 0.70) calc(c * .56) h);
-    --ability-collapsed-outline-highlight: oklch(from var(--t5e-color-palette-gold-62) calc(l * 0.92) calc(c * .8) h);
     container-name: abilities;
     container-type: inline-size;
     overflow-x: auto;
@@ -37,23 +35,12 @@
     flex-wrap: nowrap;
   }
 
-  &.abilities-overflow .abilities-container-inner {
-    gap: 0;
-    max-width: 100%;
-
-    .initiative {
-      width: 3.25rem;
-      flex-grow: 0;
-    }
-  }
-
   .shield {
     background-image: var(--t5e-shield-image);
     background-position: top center;
     background-size: contain;
     background-repeat: no-repeat;
     max-height: 4rem;
-    color: var(--t5e-color-text-light);
     font-weight: bold;
     font-size: 1.25rem;
     position: relative;
@@ -297,14 +284,12 @@
     .modifier {
       color: var(--t5e-color-text-lightest);
       font-size: 1.5rem;
-      letter-spacing: var(--t5e-font-letter-spacing-large);
       line-height: 1.5rem;
     }
 
     .bonus {
       font-size: 1.5rem;
       font-weight: bold;
-      letter-spacing: var(--t5e-font-letter-spacing-large);
       line-height: 1.5rem;
     }
 
@@ -471,7 +456,6 @@
   /* ------------------------------------------------------------ */
   .abilities-container.abilities-size-compact,
   &.theme-basic .abilities-container {
-    --collapse-font-large: 1.5rem;
     --collapse-font-medium: 1.4375rem;
 
     .abilities-container-inner > * {
@@ -633,9 +617,7 @@
 
       .abilities-container {
         --ability-collapsed-bg: oklch(from var(--t5e-component-card-default) l c h / 0.5);
-        --ability-collapsed-bg-highlight: var(--t5e-component-card-lighter);
         --ability-collapsed-outline: var(--t5e-color-palette-gold-75);
-        --ability-collapsed-outline-highlight: var(--t5e-color-palette-gold-56);
       }
     }
 
@@ -733,9 +715,7 @@
         .ac-container,
         .ability.initiative {
           --ability-collapsed-bg: oklch(from var(--t5e-component-card-default) l c h / 0.5);
-          --ability-collapsed-bg-highlight: var(--t5e-component-card-lighter);
           --ability-collapsed-outline: var(--t5e-color-palette-gold-75);
-          --ability-collapsed-outline-highlight: var(--t5e-color-palette-gold-56);
         }
       }
     }

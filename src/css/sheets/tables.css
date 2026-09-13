@@ -17,7 +17,6 @@
     --t5e-theme-color-foreground: var(--t5e-component-card-foreground);
     --t5e-theme-color-foreground-disabled: var(--t5e-component-card-foreground-disabled);
     --t5e-theme-color-foreground-diminished: var(--t5e-component-card-foreground-diminished);
-    --t5e-theme-color-foreground-darker: var(--t5e-component-card-foreground-darker);
     --t5e-theme-color-foreground-darker-disabled: var(--t5e-component-card-foreground-disabled);
     --t5e-theme-color-foreground-darker-diminished: var(--t5e-component-card-foreground-diminished);
     border-radius: 0;
@@ -64,10 +63,6 @@
       .tidy-table-header-cell,
       .table-header-count {
         color: var(--t5e-theme-color-foreground);
-      }
-
-      .header-label-cell h3 {
-        color: var(--t5e-text-color-default);
       }
     }
   }
@@ -269,7 +264,6 @@
   }
 
   .tidy-table-row {
-    --t5e-item-row-background: transparent;
     border-radius: var(--t5e-size-halfx);
     border-width: 0 0 var(--t5e-size-1) 0;
     border-style: solid;
@@ -316,9 +310,7 @@
     }
 
     &.spell:not(.equipped) {
-
-      .item-label,
-      .item-context {
+      .item-label {
         font-style: italic;
         color: var(--t5e-color-text-lightest);
       }
@@ -342,7 +334,6 @@
     }
 
     &.equipped {
-      --t5e-item-row-background: var(--t5e-color-palette-grey-100);
       background: linear-gradient(to right,
           var(--t5e-color-palette-grey-100) 10%,
           rgba(255, 255, 255, 0.24) 50%);
@@ -450,10 +441,6 @@
       max-height: none;
     }
 
-    .cell-label {
-      font-size: var(--font-size-default);
-    }
-
     .cell-text,
     .cell-name,
     .cell-context {
@@ -521,25 +508,6 @@
 
       &.recharge i {
         margin-inline-end: var(--t5e-size-1x);
-      }
-    }
-
-    .hit-save {
-      font-size: var(--font-size-14);
-
-      .value {
-        font-weight: var(--font-weight-bold);
-      }
-
-      .modifier {
-        font-weight: var(--font-weight-label);
-        color: var(--t5e-color-text-lightest);
-      }
-
-      .ability {
-        font-weight: var(--font-weight-label);
-        color: var(--t5e-color-text-gold-emphasis);
-        margin-inline-end: var(--t5e-size-halfx);
       }
     }
 
@@ -872,10 +840,6 @@
     /* For sheets with hundreds of items */
     content-visibility: auto;
 
-    &.context {
-      box-shadow: 0 0 0.1875rem 0.0625rem var(--t5e-primary-accent-color) inset;
-    }
-
     .tidy-table-row:not(.expandable) {
       .item-name {
         margin-inline-start: var(--t5e-size-2x);
@@ -904,19 +868,6 @@
         --icon-size: calc(var(--t5e-size-6x) - var(--t5e-size-halfx));
       }
     }
-
-    .activity-indent-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      align-self: stretch;
-      font-size: var(--font-size-12);
-      width: var(--t5e-icon-size-7x);
-
-      i {
-        color: var(--t5e-color-icon-disabled);
-      }
-    }
   }
 
   .cast-activity-missing-spell-indicator {
@@ -931,7 +882,6 @@
 
   /* Inline Containers */
   .tidy-table-row ~ .expandable.expanded {
-    --t5e-item-row-background: rgba(255, 255, 255, 0.08);
     background: linear-gradient(120deg,
         var(--t5e-component-card-darker) 10%,
         var(--t5e-component-card-default) 120%);
@@ -1061,10 +1011,6 @@
 
   .header-cell-actions {
     justify-content: flex-end;
-
-    .header-action {
-      color: var(--t5e-color-icon-button);
-    }
   }
 
   /* Spellbook */
@@ -1102,7 +1048,6 @@
     }
 
     &.prepared {
-      --t5e-item-row-background: var(--t5e-color-palette-grey-100);
       background: linear-gradient(to right,
           var(--t5e-color-palette-grey-100) 10%,
           rgba(255, 255, 255, 0.24) 60%);
@@ -1241,7 +1186,6 @@
       }
 
       &.expanded {
-        --t5e-item-row-background: rgba(255, 255, 255, 0.06);
         background: var(--t5e-component-card-default);
       }
 
@@ -1255,7 +1199,6 @@
             transparent 64%);
 
         &.expanded {
-          --t5e-item-row-background: rgba(255, 255, 255, 0.08);
           background: var(--t5e-component-card-default);
         }
 
@@ -1273,7 +1216,6 @@
 
       /* If expanded, make it a little more visible. */
       &.prepared.expanded {
-        --t5e-item-row-background: rgba(255, 255, 255, 0.08);
         background: var(--t5e-component-card-default);
       }
 

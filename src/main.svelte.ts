@@ -1,6 +1,5 @@
 // 💡 Order of imports is important
 import { FoundryAdapter } from './foundry/foundry-adapter';
-import './css/components/statblock-embed.css';
 import './css/tidy5e.css';
 import { initSettings } from './settings/settings.svelte';
 import { CONSTANTS } from './constants';
