@@ -3,6 +3,11 @@
     i.enabled {
       color: var(--t5e-theme-color-darker);
     }
+
+    .inline-activity-arrow {
+      padding-inline: 0.25rem;
+      align-self: center;
+    }
   }
 
   &.theme-dark {
