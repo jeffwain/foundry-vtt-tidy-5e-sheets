@@ -1,8 +1,4 @@
 .tidy5e-sheet.application:where(.quadrone.character) {
-  &:not(.minimized) {
-    min-width: 43.75rem;
-  }
-
   &.actor .window-content {
     /* Force overlap for image shadows in the header.
      * Content scrolling handled in individual components. */
@@ -10,7 +6,7 @@
     margin-block-start: calc(-1 * var(--t5e-size-5x));
   }
 
-  /* HEADER STYLES
+  /* HEADER STYLES */
   /* ------------------------------------------------------------ */
   .sheet-header {
     .show-xp {
@@ -136,6 +132,7 @@
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0.3125rem;
 
     span,
     i {
@@ -225,17 +222,13 @@
     position: relative;
   }
 
-  .concentration {
-    bottom: 0.3125rem;
-  }
-
   .sheet-header:has(.abilities-container.abilities-size-compact) {
     .level-container {
       margin-top: var(--t5e-size-1x);
     }
   }
 
-  /* Smaller header styles for mid-size sheet
+  /* Smaller header styles for mid-size sheet */
   /* ------------------------------------------------------------ */
   .abilities-size-small {
     .ac-container {
@@ -271,7 +264,7 @@
     }
   }
 
-  /* Smallest abilities and basic theme overlaps
+  /* Smallest abilities and basic theme overlaps */
   /* ------------------------------------------------------------ */
   .abilities-size-compact,
   &.theme-basic .abilities-container {
@@ -292,7 +285,6 @@
         .ac-label {
           display: initial;
           margin-top: 0;
-          display: initial;
         }
       }
 
@@ -342,53 +334,13 @@
     }
   }
 
-  @container character-sheet (width > 50rem) {
-    --header-padding: 1.5rem;
-  }
-
-  @container character-sheet (width < 50rem) {
-    .sheet-header-content {
-      flex-wrap: wrap;
-    }
-
-    .hide-10 {
-      display: none;
-    }
-  }
-
-  @container character-sheet (width < 43.75rem) {
-    .sheet-header .actor-vitals-container {
-      max-width: 10rem;
-
-      .actor-image img {
-        height: 10rem;
-        width: 10rem;
-      }
-    }
-  }
-
-  /* Limited sheet styles
+  /* Limited sheet styles */
   /* ------------------------------------------------------------ */
-  .limited-sheet {
-    &.sheet-header {
-      .actor-vitals-container {
-        padding-bottom: 1.5rem;
-        max-width: 10rem;
-      }
-
-      .actor-name {
-        margin-bottom: 1.5rem;
-      }
-    }
-
-    .editor-rendered-content {
-      border: none;
-      margin: var(--t5e-size-4x) 0;
-      padding: 0 var(--t5e-size-4x);
-    }
+  .limited-sheet.sheet-header .actor-vitals-container {
+    padding-bottom: 1.5rem;
   }
 
-  /* Parchment theme styles
+  /* Parchment theme styles */
   /* ------------------------------------------------------------ */
   &.theme-light.theme-parchment {
     .sheet-header {
@@ -403,7 +355,4 @@
       }
     }
   }
-
-  /* TABS
-  /* ------------------------------------------------------------ */
 }
