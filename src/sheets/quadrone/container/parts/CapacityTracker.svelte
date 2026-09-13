@@ -36,14 +36,12 @@
 
 {#if contentsVisibility === 'visible'}
 <div class="label">
-  <span class="row">
     {#if showIcon}
       <i class="fas fa-weight-hanging text-label-icon"></i>
     {/if}
     <span class="value font-weight-label">{value}</span>
     <span class="separator">/</span>
     <span class="max color-text-default">{max}</span>
-  </span>
   <span>
     {#if capacity.units}
       <span class="units color-text-lightest">{capacity.units}</span>
