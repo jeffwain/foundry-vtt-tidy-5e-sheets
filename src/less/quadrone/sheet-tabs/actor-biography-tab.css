@@ -40,7 +40,6 @@
 
       li {
         flex: 1;
-        /* 0 1 autcalc(50% - var(--t5e-size-4x)); */
         min-width: 0;
       }
     }
