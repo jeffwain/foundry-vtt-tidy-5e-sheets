@@ -56,8 +56,6 @@
 
   @container biography-tab (width < 42rem) {
     .tidy-tab.biography {
-      transition: all var(--t5e-transition-default);
-
       .biography-entries {
         transition: all var(--t5e-transition-default);
         gap: var(--t5e-size-1x) var(--t5e-size-6x);

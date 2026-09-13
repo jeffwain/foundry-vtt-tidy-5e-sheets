@@ -3,11 +3,13 @@
   /* BASTION TAB ------------------------------------------------------------ */
   .tidy-tab.bastion {
     --bastion-row-gap: var(--t5e-size-6x);
+    /* Fallback in case images fail to load */
     --bastion-facility-background: linear-gradient(145deg,
         rgba(248, 244, 241, 0.85) 10%,
         rgba(248, 244, 241, 0.1) 160%),
       var(--underlay) 40%,
       var(--t5e-component-card-default);
+    background: var(--bastion-facility-background);
     container-name: bastion-tab;
     container-type: inline-size;
 
@@ -160,7 +162,6 @@
 
         &:hover {
           span {
-            text-shadow: var(--t5e-drop-shadow-field-hover);
             color: var(--t5e-color-text-default);
           }
 
@@ -179,7 +180,6 @@
       .title {
         font-size: 0.9375rem;
         transition: all 0.3s ease;
-        font-weight: var(--font-heading-weight-label);
       }
 
       .subtitle {
@@ -267,7 +267,6 @@
             rgba(27, 29, 35, 0.1) 170%),
           var(--underlay) 40%, #2c3e50;
         background-blend-mode: normal, normal;
-        background-size: cover, cover;
 
         &.basic {
           background-blend-mode: normal, luminosity;
