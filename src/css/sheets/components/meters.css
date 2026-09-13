@@ -85,16 +85,23 @@
 
       &.medium {
         --bar-background: linear-gradient(to right,
-            var(--t5e-color-palette-orange-40) 0%,
-            var(--t5e-color-palette-orange-55) 100%);
-        --bar-border-color: var(--t5e-color-palette-orange-40);
+            var(--t5e-color-inventory-dark-medium) 0%,
+            var(--t5e-color-inventory-light-medium) 100%);
+        --bar-border-color: var(--t5e-color-inventory-max-medium);
       }
 
       &.high {
+        --bar-background: linear-gradient(to right,
+            var(--t5e-color-inventory-dark-high) 0%,
+            var(--t5e-color-inventory-light-high) 100%);
+        --bar-border-color: var(--t5e-color-inventory-max-high);
+      }
+
+      &.exceeded {
         --bar-background: linear-gradient(90deg,
-            var(--t5e-color-palette-red-27) 20%,
-            var(--t5e-color-palette-red-60) 100%);
-        --bar-border-color: var(--t5e-color-palette-red-45);
+            var(--t5e-color-inventory-dark-exceeded) 20%,
+            var(--t5e-color-inventory-light-exceeded) 100%);
+        --bar-border-color: var(--t5e-color-inventory-max-exceeded);
       }
     }
 

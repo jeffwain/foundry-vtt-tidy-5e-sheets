@@ -6,26 +6,9 @@
     transform: rotate(-90deg) scaleX(-1);
   }
 
-  .flip-y {
-    transform: scaleY(-1);
-  }
-
   /* Height */
   .full-height {
     height: 100%;
-  }
-
-  /* Font-size */
-  .fs-lg {
-    font-size: 1.25rem !important;
-  }
-
-  .fs-sm {
-    font-size: 0.75rem !important;
-  }
-
-  .ff-title {
-    font-family: var(--t5e-title-font-family) !important;
   }
 
   /* Lists */
@@ -43,11 +26,6 @@
   /* Text */
   .break-word {
     overflow-wrap: break-word;
-  }
-
-  /* Sizing */
-  .w-100 {
-    width: 100%;
   }
 }
 
