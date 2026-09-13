@@ -10,7 +10,6 @@
     h2,
     h3,
     h4 {
-      font-weight: var(--font-heading-weight-default);
       line-height: 100%;
     }
 
@@ -31,7 +30,6 @@
 
     h4 {
       font-size: var(--font-size-15);
-      font-weight: var(--font-heading-weight-semibold);
       margin-block: var(--t5e-size-4x) var(--t5e-size-2x);
     }
 
@@ -50,8 +48,6 @@
     }
 
     li {
-      margin: none;
-
       > :first-child {
         margin-block-start: var(--t5e-size-1x);
       }
@@ -103,7 +99,6 @@
       border-radius: var(--t5e-size-1x);
 
       thead {
-        --table-header-text-color: var(--t5e-color-palette-grey-100);
         background: linear-gradient(to right,
             var(--t5e-theme-color-darkest) 0%,
             var(--t5e-theme-color-default) 100%);
@@ -488,11 +483,6 @@
       margin-block-start: 0.5em;
     }
 
-    /* TODO: Remove the line separator and this style when App V1 is eliminated */
-    .horizontal-line-separator {
-      display: none;
-    }
-
     &:not(:has(.inline-wrapped-elements)) {
       padding-block-end: var(--t5e-size-2x);
     }
@@ -528,20 +518,8 @@
 
     .editor,
     .editor-rendered-content {
-      a[href] {
-
-        &:hover,
-        &:focus {
-          text-shadow: 0 0 0.375rem 0 var(--t5e-color-text-gold-emphasis);
-        }
-      }
-
       blockquote {
         border-color: var(--t5e-theme-color-default);
-      }
-
-      .callout {
-        /* TODO: make cool callout UI here */
       }
 
       hr {
@@ -577,10 +555,6 @@
       }
 
       ul ul ul li::marker {
-        color: var(--t5e-color-text-lighter);
-      }
-
-      ol li::marker {
         color: var(--t5e-color-text-lighter);
       }
     }

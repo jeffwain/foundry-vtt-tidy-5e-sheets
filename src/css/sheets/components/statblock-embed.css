@@ -1,4 +1,4 @@
-/* dnd5e UI ports scoped to Tidy sheets: NPC embed statblocks and editor layout helpers. */
+/* NPC embedded statblock styles */
 .tidy5e-sheet {
   &.theme-dark {
     .statblock.npc {
@@ -15,7 +15,6 @@
     }
   }
 
-  /* NPC stat block embeds (dnd5e npc-embed.hbs) */
   .statblock.npc {
     --statblock-color-gold: var(--t5e-color-gold, #9f9275);
     --statblock-theme-color-default: #741b2b;

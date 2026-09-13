@@ -39,10 +39,6 @@
       }
     }
 
-    .configuration-tab {
-      width: 100%;
-    }
-
     .button-bar {
       display: flex;
       flex-wrap: wrap;
@@ -53,7 +49,6 @@
 
       > * {
         flex: 1;
-        text-wrap: none;
       }
     }
   }
@@ -84,7 +79,6 @@
     padding-block: var(--t5e-size-2x) var(--t5e-size-6x);
     padding-inline: var(--t5e-size-2x);
     border-inline-end: 0.0625rem solid var(--t5e-settings-border-color);
-    background-color: var(--t5e-header-background);
   }
 
   .nav-group {
@@ -161,6 +155,10 @@
         border-color: transparent;
         background-color: var(--tab-background-color);
       }
+
+      i {
+        --icon-fill: var(--t5e-color-icon-default);
+      }
     }
 
     &.tab-hidden {
@@ -232,8 +230,6 @@
 
   .window-header {
     button.header-control {
-      color: var(--t5e-text-icon-lighter);
-
       &:hover {
         color: var(--t5e-color-icon-default);
       }
@@ -254,41 +250,9 @@
       flex-direction: column;
       gap: var(--t5e-size-halfx);
     }
-
-    .new-section {
-      display: flex;
-      flex-direction: column;
-      gap: var(--t5e-size-halfx);
-    }
-  }
-
-  /* Sheet Default Preferences */
-  &.tidy5e-sheet-preferences {
-    .settings-header {
-      margin-block-end: var(--t5e-size-1x);
-    }
-
-    .settings-description {
-      margin-block-end: var(--t5e-size-3x);
-    }
-
-    .title-underlined {
-      margin-block-end: var(--t5e-size-2x);
-    }
-
-    .tidy-table-header-row .tidy-table-header-cell {
-      padding-block: var(--t5e-size-1x);
-    }
-
-    .scroll-container {
-      flex: 1;
-      min-height: 0;
-      overflow-y: auto;
-    }
   }
 
   /* Theme Settings */
-  &.tidy-theme-settings,
   &.tidy-sheet-settings {
     --t5e-font-roboto-condensed: "Signika", "Palatino Linotype", sans-serif;
     --t5e-font-family-default: "Signika", "Palatino Linotype", sans-serif;
@@ -344,10 +308,6 @@
         box-shadow: var(--t5e-drop-shadow-field-hover);
         border-color: var(--t5e-component-field-border-hover);
         --bg-color: var(--t5e-component-field-background-hover);
-
-        i {
-          color: var(--t5e-color-icon-default);
-        }
       }
 
       &[style^="--bg-color"] {
@@ -384,29 +344,6 @@
 
   .sheet-tab-configuration {
     gap: var(--t5e-size-4x);
-  }
-
-  &.sheet-tab-configuration,
-  &.world-tab-configuration {
-    .tabs-row {
-      margin-block-end: var(--t5e-size-4x);
-      margin-block-start: var(--t5e-size-2x);
-    }
-  }
-
-  &.world-tab-configuration {
-    .tab-option {
-      height: var(--t5e-field-size-default);
-      display: flex;
-      align-items: center;
-      padding-inline-start: var(--t5e-size-2x);
-      gap: var(--t5e-size-1x);
-      border-radius: var(--t5e-size-half);
-
-      &.active {
-        background: var(--t5e-component-field-background-active);
-      }
-    }
   }
 
   .world-settings-overview {
@@ -462,12 +399,6 @@
       align-items: center;
       padding-block: 0.3125rem;
       padding-inline: 0.5rem;
-    }
-  }
-
-  &.tidy5e-sheet-preferences {
-    .sheet-preferences-table {
-      margin-block-end: var(--t5e-size-8x);
     }
   }
 
@@ -529,10 +460,6 @@
       h3 {
         padding-inline-start: 0.75rem;
       }
-    }
-
-    .skills-traits-layout-options {
-      margin-block-end: var(--t5e-size-4x);
     }
 
     .spell-name-button {

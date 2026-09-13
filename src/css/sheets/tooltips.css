@@ -112,12 +112,6 @@
     }
   }
 
-  .container-capacity-tooltip {
-    .units {
-      color: var(--color-text-lighter);
-    }
-  }
-
   .group-trait-grid {
     display: grid;
     grid-template-columns: 1.5rem 10rem 2.25rem;
@@ -258,10 +252,6 @@
     .flexrow {
       justify-content: space-between;
       gap: var(--t5e-size-4x);
-    }
-
-    .hp-tooltip-row + .hp-tooltip-row {
-      margin-block-start: var(--t5e-size-1x);
     }
   }
 }
