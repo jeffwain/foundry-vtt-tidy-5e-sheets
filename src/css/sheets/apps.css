@@ -11,6 +11,13 @@
   background: var(--app-background);
   box-shadow: var(--t5e-drop-shadow-sheet);
   background-size: cover;
+  color: var(--t5e-color-text-default);
+  /* Sheet Body Typography */
+  font-family: var(--t5e-font-family-default, var(--t5e-font-roboto-condensed));
+  font-size: var(--font-size-default, 0.8125rem);
+  font-style: normal;
+  font-weight: var(--font-weight-default);
+  line-height: normal;
 
   &::before,
   &::after {
@@ -67,14 +74,6 @@
     }
   }
 
-  color: var(--t5e-color-text-default);
-  /* Sheet Body Typography */
-  font-family: var(--t5e-font-family-default, var(--t5e-font-roboto-condensed));
-  font-size: var(--font-size-default, 0.8125rem);
-  font-style: normal;
-  font-weight: var(--font-weight-default);
-  line-height: normal;
-
   /* Window Header */
   .window-header {
     align-items: center;
@@ -116,7 +115,6 @@
   &.theme-basic.theme-light {
     .window-header {
       button.header-control {
-        color: var(--t5e-text-icon-lighter);
 
         &:hover,
         &:focus-within,
@@ -220,7 +218,6 @@
       font-family: var(--t5e-font-roboto-condensed);
       font-size: var(--font-size-13);
       font-style: normal;
-      font-weight: var(--font-heading-weight-semibold);
       line-height: var(--font-size-16);
       letter-spacing: 0.00813rem;
     }
@@ -228,27 +225,23 @@
     h1 {
       font-size: var(--font-size-46);
       line-height: var(--font-size-56);
-      font-weight: var(--font-heading-weight-default);
     }
 
     h2 {
       font-size: var(--font-size-28);
       line-height: var(--font-size-32);
-      font-weight: var(--font-heading-weight-default);
       letter-spacing: 0.0175rem;
     }
 
     h3 {
       font-size: var(--font-size-16);
       line-height: var(--font-size-16);
-      font-weight: var(--font-heading-weight-default);
       letter-spacing: 0.00875rem;
     }
 
     h4 {
       font-size: var(--font-size-13, 0.8125rem);
       font-style: normal;
-      font-weight: var(--font-heading-weight-semibold);
       line-height: var(--font-size-16);
       letter-spacing: 0.00813rem;
     }
@@ -289,33 +282,6 @@
   }
 
   /* Currencies */
-  .currency-tracker {
-    display: flex;
-    gap: 0.25rem;
-
-    input {
-      text-align: right;
-    }
-
-    .denomination {
-      text-transform: uppercase;
-    }
-
-    .input-group {
-      gap: 0.25rem;
-      padding-block: 0.25rem;
-      height: 1.75rem;
-    }
-
-    .button.icon-button {
-      --size: 1.75rem;
-
-      i {
-        font-size: 0.6875rem;
-      }
-    }
-  }
-
   :is(i, span).currency {
     width: 1em;
     height: 1em;
@@ -444,7 +410,6 @@
 
   code {
     background-color: rgba(0, 0, 0, 0.08);
-    color: var(--t5e-color-text);
     border: none;
     font-size: var(--font-size-12);
     margin-block: -0.0625rem;
@@ -491,7 +456,6 @@
   .roll-link-group {
     border: none;
     background: var(--t5e-enricher-background);
-    padding-block-start: var(--t5e-size-1) var(--t5e-size-halfx);
     padding-inline: var(--t5e-size-1) var(--t5e-size-halfx);
 
     &:has(.enricher-action) {
@@ -525,53 +489,6 @@
 
   .roll-link {
     padding-inline-start: var(--t5e-size-halfx);
-  }
-
-  /* Item Summary */
-  /* TODO: Remove this if not used. Moved to .editor-rendered-content in editors.less */
-  .item-summary {
-    flex: 0 0 100%;
-    padding-block-start: var(--item-summary-padding-top, 0);
-    padding-inline-end: var(--item-summary-padding-right, var(--t5e-size-2x));
-    padding-block-end: var(--item-summary-padding-bottom, var(--t5e-size-1x));
-    padding-inline-start: var(--item-summary-padding-left, var(--t5e-size-1x));
-    border-width: 0 0 var(--t5e-size-1) 0;
-    border-style: solid;
-    border-image: linear-gradient(to right,
-        rgba(143, 123, 78, 0) 0%,
-        rgba(143, 123, 78, 0.25) 20%,
-        rgba(143, 123, 78, 0.25) 80%,
-        rgba(143, 123, 78, 0) 100%) 0 0 1 0;
-
-    p:not(:first-child) {
-      margin-block-start: 0.5em;
-    }
-
-    /* TODO: Remove the line separator and this style when App V1 is eliminated */
-    .horizontal-line-separator {
-      display: none;
-    }
-
-    .inline-wrapped-elements {
-      margin-block-start: var(--t5e-size-3x);
-      margin-block-end: var(--t5e-size-1x);
-    }
-
-    .left-aligned-elements {
-      display: flex;
-      flex-grow: 1;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: var(--t5e-size-1x);
-    }
-
-    .right-aligned-elements {
-      display: flex;
-      flex-grow: 0;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: var(--t5e-size-1x);
-    }
   }
 
   sup,
@@ -620,7 +537,6 @@
   input[type="file"]:disabled,
   select:disabled,
   textarea:disabled {
-    pointer-events: default;
     cursor: text;
   }
 
@@ -804,28 +720,16 @@
 
   &.disable-transitions {
     --t5e-transition-default: none;
-    --t5e-transition-speed: 0;
-    --t5e-transition-animation: none;
   }
 }
 
 .tidy5e-sheet.application.quadrone.tidy-dragging {
-  --t5e-transition-speed: 0;
-  --t5e-transition-speed-slow: 0;
-  --t5e-transition-animation: none;
-  --t5e-transition-animation-slow: none;
   --t5e-transition-default: 0 none;
-  --t5e-transition-slow: 0 none;
   --t5e-drop-shadow-sheet: none;
-  --t5e-drop-shadow-modal: none;
   --t5e-drop-shadow-card: none;
-  --t5e-drop-shadow-card-dark: none;
   --t5e-drop-shadow-pill: none;
   --t5e-drop-shadow-field: none;
   --t5e-drop-shadow-field-hover: none;
   --t5e-drop-shadow-field-focus: none;
   --t5e-filter-drop-shadow-token: none;
-  --t5e-component-enricher-text-hover-shadow: none;
-  --t5e-table-header-box-shadow: none;
-  --t5e-drop-shadow-card: none;
 }

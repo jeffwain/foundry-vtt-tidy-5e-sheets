@@ -86,6 +86,10 @@
     color: var(--t5e-theme-color-default);
   }
 
+  .color-icon-theme-lighter {
+    color: var(--t5e-theme-color-lighter);
+  }
+
   .color-icon-theme-highlight {
     color: var(--t5e-theme-color-highlight);
   }
