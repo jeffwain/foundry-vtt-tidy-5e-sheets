@@ -114,6 +114,13 @@
       <div class="actor-name flexcol">
         <h4 class="font-label-medium">
           {member.actor.name}
+          {#if member.isPrimaryVehicle}
+            <i
+              class="fa-solid fa-circle-star color-text-gold primary-vehicle"
+              data-tooltip={localize('DND5E.Group.Vehicle.Primary.label')}
+              aria-label={localize('DND5E.Group.Vehicle.Primary.label')}
+            ></i>
+          {/if}
         </h4>
         {#if member.canObserve}
           {#if member.actor.system.isCharacter || member.actor.system.isNPC}

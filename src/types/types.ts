@@ -780,7 +780,7 @@ export type ActorTraitContext<TValue = unknown> = {
   key?: string;
   /** Icons associated with the trait. */
   icons?: { icon: string; label: string }[];
-  /** 
+  /**
     Custom HTML content, to appear to the right of any specified icons and before any other content.
     This content is specifically rendered as HTML, unlike the more specific building blocks.
    */
@@ -1136,6 +1136,7 @@ export type GroupMemberQuadroneContext = {
   encumbrance: GroupMemberEncumbranceContext;
   highlightColor: string | undefined;
   inspirationSource: InspirationSource | undefined;
+  isPrimaryVehicle: boolean;
   portrait: MultiActorMemberPortraitContext;
   gold: string;
   goldAbbreviation: string;
@@ -1330,6 +1331,10 @@ export type GroupSheetQuadroneContext = {
   travel: {
     currentPace: TravelPaceConfigEntry;
     paces: TravelPaceConfigEntry[];
+    /** False when a non-land vehicle is set as the primary vehicle, blocking changes. */
+    paceAvailable: boolean;
+    /** Travel distance per travel method, checks the primary vehicle when set. */
+    paceValues: Record<string, number>;
     /** 1 (slow), 2 (normal), or 3 (fast), corresponding to the slowest speed, any speed in between, and the fastest speed, respectively. */
     speed: number;
     units: {

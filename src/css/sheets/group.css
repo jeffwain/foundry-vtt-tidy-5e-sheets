@@ -72,8 +72,16 @@
       }
 
       &.group-speeds {
-        margin-left: 0.625rem;
-        margin-bottom: var(--t5e-size-halfx);
+        margin-inline-start: 0.625rem;
+        margin-block-end: var(--t5e-size-halfx);
+
+        &.no-pace {
+          margin-inline-start: 1rem;
+        }
+
+        .primary-vehicle {
+          margin-inline-start: var(--t5e-size-1x);
+        }
       }
 
       .xp-pool {

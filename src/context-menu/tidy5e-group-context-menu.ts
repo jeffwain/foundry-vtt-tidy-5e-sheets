@@ -62,6 +62,29 @@ export function getGroupMemberContextOptions(
         ),
     },
     {
+      label: 'DND5E.Group.Action.SetPrimaryVehicle',
+      icon: `<i class="fa-solid fa-circle-star fa-fw"></i>`,
+      onClick: async () =>
+        await group.update({ 'system.primaryVehicle': actor.id }),
+      visible: () =>
+        group.isOwner &&
+        !FoundryAdapter.isLockedInCompendium(group) &&
+        actor.system.isVehicle &&
+        group.system.primaryVehicle?.uuid !== actor.uuid,
+      group: 'common',
+    },
+    {
+      label: 'DND5E.Group.Action.UnsetPrimaryVehicle',
+      icon: `<i class="fa-regular fa-star fa-fw"></i>`,
+      onClick: async () =>
+        await group.update({ 'system.primaryVehicle': null }),
+      visible: () =>
+        group.isOwner &&
+        !FoundryAdapter.isLockedInCompendium(group) &&
+        group.system.primaryVehicle?.uuid === actor.uuid,
+      group: 'common',
+    },
+    {
       label: 'DND5E.Group.Action.Remove',
       icon: `<i class="fa-solid fa-trash fa-fw"></i>`,
       onClick: async () => await group.system.removeMember(actor),

@@ -29,6 +29,27 @@
   let totalCurrency = $derived.by(() =>
     context.sheet.getDefaultCurrencySummary(context.actor),
   );
+
+  // Non-land primary vehicles set their own speed and we can't adjust pace.
+  let showPace = $derived(
+    context.travel.paceAvailable && !!context.travel.currentPace,
+  );
+
+  let travelSpeeds = $derived(
+    [
+      { key: 'land', label: 'DND5E.TRAVEL.Type.Land' },
+      { key: 'air', label: 'DND5E.TRAVEL.Type.Air' },
+      { key: 'water', label: 'DND5E.TRAVEL.Type.Water' },
+    ]
+      .map((type) => ({ ...type, value: context.travel.paceValues[type.key] }))
+      .filter((type) => type.value > 0),
+  );
+
+  let primaryVehicleLabel = $derived(
+    context.actor.system.primaryVehicle
+      ? `${localize('DND5E.Group.Vehicle.Primary.label')} - ${context.actor.system.primaryVehicle.name}`
+      : undefined,
+  );
 </script>
 
 {#snippet speedSenseSummary(
@@ -127,10 +148,10 @@
 </div>
 
 <div
-  class="actor-subtitle separated-list group-speeds"
+  class="actor-subtitle separated-list group-speeds {showPace ? '' : 'no-pace'}"
   data-tidy-sheet-part="subtitle-row"
 >
-  {#if !!context.travel.currentPace}
+  {#if showPace}
     <div class="span separated-list travel-pace">
       <button
         class="button button-borderless button-icon-only"
@@ -171,47 +192,28 @@
       </div>
     </div>
   {/if}
-  {#if context.actor.system.attributes.travel.paces.land > 0}
-    <div class="divider-dot"></div>
+  {#each travelSpeeds as travelSpeed, index (travelSpeed.key)}
+    {#if index > 0 || showPace}
+      <div class="divider-dot"></div>
+    {/if}
     <span class="speed">
       <span class="color-text-gold font-label-medium"
-        >{localize('DND5E.TRAVEL.Type.Land')}</span
+        >{localize(travelSpeed.label)}</span
       >
       <span class="color-text-default font-data-medium"
-        >{context.actor.system.attributes.travel.paces.land}</span
+        >{travelSpeed.value}</span
       >
       <span class="color-text-lighter font-label-medium"
         >{context.travel.units.label}</span
       >
     </span>
-  {/if}
-  {#if context.actor.system.attributes.travel.paces.air > 0}
-    <div class="divider-dot"></div>
-    <span class="speed">
-      <span class="color-text-gold font-label-medium"
-        >{localize('DND5E.TRAVEL.Type.Air')}</span
-      >
-      <span class="color-text-default font-data-medium"
-        >{context.actor.system.attributes.travel.paces.air}</span
-      >
-      <span class="color-text-lighter font-label-medium"
-        >{context.travel.units.label}</span
-      >
-    </span>
-  {/if}
-  {#if context.actor.system.attributes.travel.paces.water > 0}
-    <div class="divider-dot"></div>
-    <span class="speed">
-      <span class="color-text-gold font-label-medium"
-        >{localize('DND5E.TRAVEL.Type.Water')}</span
-      >
-      <span class="color-text-default font-data-medium"
-        >{context.actor.system.attributes.travel.paces.water}</span
-      >
-      <span class="color-text-lighter font-label-medium"
-        >{context.travel.units.label}</span
-      >
-    </span>
+  {/each}
+  {#if primaryVehicleLabel}
+    <i
+      class="fa-solid fa-circle-star color-text-gold primary-vehicle"
+      data-tooltip={primaryVehicleLabel}
+      aria-label={primaryVehicleLabel}
+    ></i>
   {/if}
   {#if context.unlocked}
     <span class="config-speeds">

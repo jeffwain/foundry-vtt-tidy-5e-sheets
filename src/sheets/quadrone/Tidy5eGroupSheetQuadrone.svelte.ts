@@ -139,10 +139,15 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
       .toSorted((a, b) => a[1].multiplier - b[1].multiplier)
       .map(([key, config], index) => ({ key, config, index }));
 
+    // Use system's getTravelPace so that we can check slowed members and vehicles.
+    const travelPace = this.actor.system.getTravelPace();
+    const travelUnits = (
+      this.actor.system.primaryVehicle?.system.attributes.travel ??
+      this.actor.system.attributes.travel
+    ).units;
+
     const currentPace =
-      paces.find(
-        (pace) => pace.key === this.actor.system.attributes.travel.pace,
-      ) ?? paces[0];
+      paces.find((pace) => pace.key === travelPace.pace.value) ?? paces[0];
 
     const enrichmentArgs = {
       secrets: this.actor.isOwner,
@@ -174,6 +179,8 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
       travel: {
         paces,
         currentPace,
+        paceAvailable: travelPace.pace.available,
+        paceValues: travelPace.paces,
         speed:
           currentPace.index === 0
             ? 1 // Slow
@@ -182,8 +189,8 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
               : 2, // Normal
         units: {
           label:
-            CONFIG.DND5E.travelUnits[this.actor.system.attributes.travel.units]
-              ?.abbreviationDay ?? this.actor.system.attributes.travel.units,
+            CONFIG.DND5E.travelUnits[travelUnits]?.abbreviationDay ??
+            travelUnits,
         },
       },
       type: 'group',
@@ -452,6 +459,7 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
               actor,
             )
           : undefined,
+        isPrimaryVehicle: this.actor.system.primaryVehicle === actor,
         portrait: await this._preparePortrait(actor),
         gold: FoundryAdapter.formatNumber(
           this.getDefaultCurrencySummary(actor),
