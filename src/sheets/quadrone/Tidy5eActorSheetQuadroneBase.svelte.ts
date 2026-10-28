@@ -1903,6 +1903,26 @@ export function getTidy5eActorSheetQuadroneBase<
         }
       }
 
+      // Let specific item types apply changes from a drop event
+      CONFIG.Item.dataModels[
+        itemData.type as keyof typeof CONFIG.Item.dataModels
+      ]?.onDropCreate?.(event, this.actor, itemData);
+
+      // Core finds target spell sections separately, but we have to find the section manually.
+      // Adds support for multiclassing so that spells don't default to the original class' method.
+      if (
+        itemData.type === CONSTANTS.ITEM_TYPE_SPELL &&
+        this.actor.system.isCreature
+      ) {
+        const target = event.target as HTMLElement | null;
+        const method = target?.closest<HTMLElement>('[data-tidy-section-key]')
+          ?.dataset['system.method'];
+
+        if (method && method in CONFIG.DND5E.spellcasting) {
+          itemData.system.method = method;
+        }
+      }
+
       return itemData;
     }
 
