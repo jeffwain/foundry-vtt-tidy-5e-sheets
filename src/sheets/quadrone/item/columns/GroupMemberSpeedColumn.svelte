@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Actor5e } from 'src/types/types';
+  import { FoundryAdapter } from 'src/foundry/foundry-adapter';
 
   let { rowDocument }: { rowDocument: Actor5e } = $props();
 
@@ -20,4 +21,11 @@
   <span class="value">{walkSpeed}</span><span
     class="units font-default-medium color-text-lighter">{units}</span
   >
+  {#if movement.slowed}
+    <i
+      class="fa-solid fa-triangle-exclamation slowed"
+      data-tooltip={FoundryAdapter.localize('DND5E.TRAVEL.Slowed.Member')}
+      aria-label={FoundryAdapter.localize('DND5E.TRAVEL.Slowed.Member')}
+    ></i>
+  {/if}
 </span>

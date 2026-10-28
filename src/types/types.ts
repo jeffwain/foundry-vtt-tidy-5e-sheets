@@ -1335,6 +1335,8 @@ export type GroupSheetQuadroneContext = {
     paceAvailable: boolean;
     /** Travel distance per travel method, checks the primary vehicle when set. */
     paceValues: Record<string, number>;
+    /** True if a group member is slowed (doesn't check vehicles). */
+    slowed: boolean;
     /** 1 (slow), 2 (normal), or 3 (fast), corresponding to the slowest speed, any speed in between, and the fastest speed, respectively. */
     speed: number;
     units: {

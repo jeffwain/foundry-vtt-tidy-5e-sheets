@@ -181,6 +181,7 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
         currentPace,
         paceAvailable: travelPace.pace.available,
         paceValues: travelPace.paces,
+        slowed: travelPace.pace.slowed,
         speed:
           currentPace.index === 0
             ? 1 // Slow

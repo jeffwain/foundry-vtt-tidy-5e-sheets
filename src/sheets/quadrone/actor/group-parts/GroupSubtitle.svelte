@@ -174,7 +174,7 @@
       <button
         class="button button-borderless button-icon-only"
         onclick={() => context.sheet.changePace(1)}
-        disabled={context.travel.speed === 3}
+        disabled={context.travel.speed === 3 || context.travel.slowed}
       >
         <i
           class="{context.travel.speed === 3
@@ -189,6 +189,13 @@
         <span class="label font-label-medium color-text-default flexshrink">
           {context.travel.currentPace.config.label}
         </span>
+        {#if context.travel.slowed}
+          <i
+            class="fa-solid fa-triangle-exclamation slowed"
+            data-tooltip={localize('DND5E.TRAVEL.Slowed.Group')}
+            aria-label={localize('DND5E.TRAVEL.Slowed.Group')}
+          ></i>
+        {/if}
       </div>
     </div>
   {/if}

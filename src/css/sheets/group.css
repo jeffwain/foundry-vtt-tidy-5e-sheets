@@ -60,7 +60,12 @@
 
         .button.button-icon-only {
           --size: var(--t5e-field-size-small);
+          --t5e-button-disabled-icon-color: var(--t5e-theme-color-foreground-disabled);
           margin: -0.25rem 0;
+        }
+
+        .slowed {
+          color: var(--t5e-warning-accent-color);
         }
 
         .button-icon-only:hover,
@@ -200,6 +205,10 @@
   .hit-points {
     display: flex;
     gap: var(--t5e-size-halfx);
+  }
+
+  .walk-speed .slowed {
+    color: var(--t5e-warning-accent-color);
   }
 
   .flexrow.hit-die,
