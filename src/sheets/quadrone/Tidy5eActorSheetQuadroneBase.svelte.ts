@@ -1946,7 +1946,7 @@ export function getTidy5eActorSheetQuadroneBase<
      */
     _onDropResetData(itemData: any) {
       if (!itemData.system) return;
-      ['attuned', 'equipped', 'prepared'].forEach((k) =>
+      ['attuned', 'equipped', 'prepared', 'crew.value'].forEach((k) =>
         foundry.utils.deleteProperty(itemData.system, k),
       );
     }
