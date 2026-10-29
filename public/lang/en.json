@@ -38,6 +38,12 @@
         "Tooltip": "Inspiration Source"
       }
     },
+    "Movement": {
+      "Slowed": {
+        "Label": "Slowed",
+        "Tooltip": "Walking speed is reduced to half or less."
+      }
+    },
     "Proficiency": {
       "Abbreviation": "Prof"
     },

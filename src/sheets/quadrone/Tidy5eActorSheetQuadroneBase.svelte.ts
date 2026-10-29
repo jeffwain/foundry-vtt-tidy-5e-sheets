@@ -870,6 +870,42 @@ export function getTidy5eActorSheetQuadroneBase<
         );
     }
 
+    /** A warning tag for the sidebar speed list when dnd5e marks the actor as slowed. */
+    _getModifiedSpeedTraits(): ActorTraitContext[] {
+      const movement = this.actor.system.attributes?.movement;
+      const baseWalk = dnd5e.utils.simplifyBonus(
+        this.actor.system._source.attributes?.movement?.speeds?.walk ||
+          movement?.fromSpecies?.walk,
+        this.actor.getRollData({ deterministic: true }),
+      );
+
+      // System flags actors with 0 walk speed (ships, swimmers)
+      const slowed =
+        (!!movement?.slowed && baseWalk > 0) ||
+        this.actor.hasConditionEffect('halfMovement') ||
+        this.actor.hasConditionEffect('noMovement');
+
+      if (!slowed) {
+        return [];
+      }
+
+      return [
+        {
+          key: 'slowed',
+          label: FoundryAdapter.localize('TIDY5E.ACTOR.Movement.Slowed.Label'),
+          icons: [
+            {
+              icon: 'fa-solid fa-triangle-exclamation',
+              label: FoundryAdapter.localize(
+                'TIDY5E.ACTOR.Movement.Slowed.Tooltip',
+              ),
+            },
+          ],
+          cssClass: 'warning',
+        },
+      ];
+    }
+
     _getMovementSpeeds(): ActorSpeedSenseEntryContext[] {
       const systemMovement = this.actor.system.attributes.movement;
       // const systemSpeeds = systemMovement.speeds;

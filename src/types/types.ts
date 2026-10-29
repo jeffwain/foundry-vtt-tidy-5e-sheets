@@ -1112,6 +1112,7 @@ export type NpcSheetQuadroneContext = {
   specialTraits: ActorTraitContext[];
   species?: ActorTraitItemContext;
   speeds: ActorSpeedSenseEntryContext[];
+  speedTraitEntries: ActorTraitContext[];
   spellbook: SpellbookSection[];
   spellcasting: (SpellcastingClassContext | NpcSpellcastingContext)[];
   spellComponentLabels: Record<string, string>;
@@ -1573,6 +1574,8 @@ export type VehicleSheetQuadroneContext = {
   passengerBrokenLinks: string[];
   quality: number;
   size: ActorSizeContext;
+  /** Warning tags that lead the sidebar Speed list, such as Slowed. */
+  modifiedSpeedTraits: ActorTraitContext[];
   speeds: ActorSpeedSenseEntryContext[];
   spellComponentLabels: Record<string, string>;
   statblock: (

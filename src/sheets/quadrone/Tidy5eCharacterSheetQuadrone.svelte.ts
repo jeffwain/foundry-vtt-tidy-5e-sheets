@@ -1048,7 +1048,7 @@ export class Tidy5eCharacterSheetQuadrone extends getTidy5eActorSheetQuadroneBas
     return {
       main: main,
       secondary: secondary,
-      traitEntries: [...main, ...secondary],
+      traitEntries: [...this._getModifiedSpeedTraits(), ...main, ...secondary],
     };
   }
 

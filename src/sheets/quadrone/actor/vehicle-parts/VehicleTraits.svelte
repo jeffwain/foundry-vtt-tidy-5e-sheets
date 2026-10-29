@@ -414,6 +414,16 @@
     <div class="list-content">
       <div class="list-values">
         <ul class="pills">
+          <!-- Slowed -->
+          {#each context.modifiedSpeedTraits as trait (trait.key)}
+            <li class={['pill', trait.cssClass]}>
+              {#each trait.icons ?? [] as icon}
+                <i class={icon.icon} data-tooltip={icon.label}></i>
+              {/each}
+              <span class="font-label-medium">{trait.label}</span>
+            </li>
+          {/each}
+
           <!-- Travel Speeds -->
           {#each travelSpeedEntries as travelSpeed}
             <li class="pill">

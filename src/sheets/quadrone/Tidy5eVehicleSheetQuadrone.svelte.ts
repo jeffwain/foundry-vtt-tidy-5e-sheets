@@ -317,6 +317,7 @@ export class Tidy5eVehicleSheetQuadrone extends getTidy5eActorSheetQuadroneBase<
             ?.abbreviation ?? '—',
         mod: this.actor.system.attributes.encumbrance.mod,
       },
+      modifiedSpeedTraits: this._getModifiedSpeedTraits(),
       speeds: super._getMovementSpeeds(),
       statblock: [],
       traits: this._prepareTraits(),

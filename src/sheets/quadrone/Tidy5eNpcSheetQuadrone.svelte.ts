@@ -242,6 +242,7 @@ export class Tidy5eNpcSheetQuadrone extends getTidy5eActorSheetQuadroneBase<NpcS
           }
         : undefined,
       speeds: super._getMovementSpeeds(),
+      speedTraitEntries: [],
       spellbook: [],
       spellcasting: this._prepareSpellcastingContext(actorContext.rollData),
       spellComponentLabels: FoundryAdapter.getSpellComponentLabels(),
@@ -305,6 +306,10 @@ export class Tidy5eNpcSheetQuadrone extends getTidy5eActorSheetQuadroneBase<NpcS
     }
 
     context.speeds = this._getMovementSpeeds();
+    context.speedTraitEntries = [
+      ...this._getModifiedSpeedTraits(),
+      ...context.speeds,
+    ];
 
     context.customContent = await NpcSheetQuadroneRuntime.getContent(context);
 

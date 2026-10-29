@@ -82,7 +82,7 @@
   <ActorTraitConfigurableListEntry
     configButtonLocation="label"
     label={localize('DND5E.Speed')}
-    entries={context.speeds}
+    entries={context.speedTraitEntries}
     configAttributes={{
       'data-action': 'showConfiguration',
       'data-config': 'movement',
