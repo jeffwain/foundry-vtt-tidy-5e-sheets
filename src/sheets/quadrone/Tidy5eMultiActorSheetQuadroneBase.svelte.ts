@@ -74,7 +74,7 @@ export function getTidy5eMultiActorSheetQuadroneBase<
       Object.keys(CONFIG.DND5E.currencies).forEach((key) =>
         currencies.push({
           key: key,
-          value: this.actor.system.currency[key] as number,
+          value: this.inventorySource.system.currency[key] as number,
           abbr:
             CONFIG.DND5E.currencies[key as keyof typeof CONFIG.DND5E.currencies]
               ?.abbreviation ?? key,
@@ -95,10 +95,12 @@ export function getTidy5eMultiActorSheetQuadroneBase<
     }
 
     _prepareItems(context: MultiActorQuadroneContext<any>) {
-      const items: Item5e[] = this.actor.items.filter((item: Item5e) => {
-        // Suppress riders for disabled enchantments
-        return item.dependentOrigin?.active !== false;
-      });
+      const items: Item5e[] = this.inventorySource.items.filter(
+        (item: Item5e) => {
+          // Suppress riders for disabled enchantments
+          return item.dependentOrigin?.active !== false;
+        },
+      );
 
       const inventory: ActorInventoryTypes =
         Inventory.getDefaultInventorySections(this.document, {
@@ -117,7 +119,9 @@ export function getTidy5eMultiActorSheetQuadroneBase<
             sheetDocument: context.document,
           });
 
-          const isWithinContainer = this.actor.items.has(item.system.container);
+          const isWithinContainer = this.inventorySource.items.has(
+            item.system.container,
+          );
 
           if (!isWithinContainer && Inventory.isItemInventoryType(item)) {
             inventoryItems.push(item);
@@ -174,8 +178,8 @@ export function getTidy5eMultiActorSheetQuadroneBase<
 
       context.inventory.forEach((section: TidyItemSectionBase) => {
         section.sectionActions = SectionActions.getStandardItemHeaderActions(
-          this.actor,
-          this.actor.isOwner,
+          this.inventorySource,
+          this.inventorySource.isOwner,
           context.unlocked,
           section,
         );

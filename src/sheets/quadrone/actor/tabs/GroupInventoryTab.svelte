@@ -52,6 +52,8 @@
   let hoveredMember = $state<string | null>(null);
 
   let members = $derived(context.members.flatMap((s) => s.members));
+
+  let primaryVehicle = $derived(context.actor.system.primaryVehicle);
 </script>
 
 <aside class="sidebar expanded">
@@ -174,6 +176,48 @@
       sheetDocument={context.actor}
       root={true}
     />
+
+    {#if context.inventorySource.canToggle || (context.inventorySource.isVehicle && primaryVehicle && context.inventorySource.encumbrance)}
+      <div class="inventory-source">
+        {#if context.inventorySource.isVehicle && primaryVehicle && context.inventorySource.encumbrance}
+          <div class="encumbrance-container pills">
+            <div class="pill flexshrink">
+              <span class="text-normal"
+                >{localize(
+                  'DND5E.VEHICLE.FIELDS.attributes.capacity.cargo.value.label',
+                )}
+              </span>
+              <span>
+                {primaryVehicle.system.attributes.capacity.cargo.value}
+              </span>
+              <span class="text-normal">
+                {CONFIG.DND5E.weightUnits[
+                  primaryVehicle.system.attributes.capacity.cargo.units
+                ]?.abbreviation}
+              </span>
+            </div>
+            <ActorEncumbranceBar
+              actor={primaryVehicle}
+              encumbrance={context.inventorySource.encumbrance}
+            />
+          </div>
+        {/if}
+        {#if context.inventorySource.canToggle}
+          <button
+            type="button"
+            class="button button-borderless button-small flexshrink"
+            onclick={() => context.sheet.toggleInventorySource()}
+          >
+            <i class="fas fa-arrow-right-arrow-left"></i>
+            {localize(
+              context.inventorySource.isVehicle
+                ? 'DND5E.Group.Action.Inventory.Group'
+                : 'DND5E.Group.Action.Inventory.Vehicle',
+            )}
+          </button>
+        {/if}
+      </div>
+    {/if}
   </div>
   <ActorInventoryFooter useAttunement={false} />
 </div>

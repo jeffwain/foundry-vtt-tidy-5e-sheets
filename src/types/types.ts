@@ -1315,6 +1315,15 @@ export type GroupSkillRollProcessConfiguration = {
   // members?: Set<string>; 🤞 https://github.com/foundryvtt/dnd5e/issues/6165
 };
 
+export type GroupInventorySourceContext = {
+  /** The user owns both the group and its primary vehicle, so they can switch inventories. */
+  canToggle: boolean;
+  /** The vehicle's cargo load, when its inventory is showing. */
+  encumbrance: EncumbranceContext | undefined;
+  /** The inventory tab is showing the primary vehicle's items. */
+  isVehicle: boolean;
+};
+
 export type GroupSheetQuadroneContext = {
   abilities: GroupAbility[];
   effects: ActiveEffectSection[];
@@ -1324,6 +1333,7 @@ export type GroupSheetQuadroneContext = {
       summary: string;
     };
   };
+  inventorySource: GroupInventorySourceContext;
   memberContext: GroupMembersQuadroneContext;
   bastionsContext: GroupBastionsQuadroneContext;
   members: GroupMemberSection[];

@@ -648,6 +648,37 @@
     .inventory-footer {
       justify-content: flex-end;
     }
+
+    /* TODO: Restyle to move to the top and keep switch buttons at the bottom */
+    .tab-content:has(.inventory-source) {
+      padding-block-end: var(--t5e-size-2x);
+    }
+
+    .tidy-table-container:has(~ .inventory-source) {
+      padding-block-end: 0;
+    }
+
+    .inventory-source {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--t5e-size-2x);
+
+      .button {
+        flex: 0 1 auto;
+      }
+
+      .button-borderless:not(:hover) {
+        --t5e-button-text: var(--t5e-color-text-lightest);
+        --t5e-button-icon: var(--t5e-color-text-lightest);
+      }
+
+      .encumbrance-container {
+        flex: 1;
+        min-inline-size: 0;
+      }
+    }
   }
 
   &:where(.theme-light) {

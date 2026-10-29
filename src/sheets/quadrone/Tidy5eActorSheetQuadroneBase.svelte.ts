@@ -125,6 +125,14 @@ export function getTidy5eActorSheetQuadroneBase<
     }
 
     /**
+     * The actor whose items the sheet shows and edits.
+     * Matches dnd5e's `inventorySource` to support primary vehicle inventory switching.
+     */
+    get inventorySource(): Actor5e {
+      return this.actor;
+    }
+
+    /**
      * A set of item types that should be prevented from being dropped on this type of actor sheet.
      */
     static unsupportedItemTypes: Set<string> = new Set();
@@ -304,10 +312,10 @@ export function getTidy5eActorSheetQuadroneBase<
         currentTabId: this.currentTabId,
         isConcentrating,
         itemContext: {},
-        items: Array.from(this.actor.items)
+        items: Array.from(this.inventorySource.items)
           .filter(
             (i: Item5e) =>
-              !this.actor.items.has(i.system.container) &&
+              !this.inventorySource.items.has(i.system.container) &&
               // Suppress riders for disabled enchantments
               i.dependentOrigin?.active !== false,
           )
@@ -350,7 +358,7 @@ export function getTidy5eActorSheetQuadroneBase<
       await this.setExpandedItemData();
 
       // TODO: Fold this into a singular items loop that is triggered by inheritors
-      for (const item of this.actor.items) {
+      for (const item of this.inventorySource.items) {
         this._prepareItemBase(context, item);
       }
 
@@ -365,7 +373,9 @@ export function getTidy5eActorSheetQuadroneBase<
 
       ctx.canIdentify = FoundryAdapter.canIdentify(this.document);
 
-      ctx.containerName = this.actor.items.get(item.system.container)?.name;
+      ctx.containerName = this.inventorySource.items.get(
+        item.system.container,
+      )?.name;
 
       if (item.type === CONSTANTS.ITEM_TYPE_CONTAINER) {
         ctx.containerCapacity = await item.system.computeCapacity();
@@ -1193,11 +1203,13 @@ export function getTidy5eActorSheetQuadroneBase<
         );
       }
 
+      const actor = this.inventorySource;
+
       // TODO: Later, if we want to keep the current behavior of preselecting the type: `const types = this._addDocumentItemTypes(args.tabId).filter(` and delete the if() below.
       let types = this._addDocumentItemTypes(args.tabId).filter(
         (type) =>
           !CONFIG.Item.dataModels[type].metadata?.singleton ||
-          !this.actor.itemTypes[type].length,
+          !actor.itemTypes[type].length,
       );
 
       if (datasetType) {
@@ -1215,8 +1227,8 @@ export function getTidy5eActorSheetQuadroneBase<
         return await Item.implementation.createDialog(
           createData,
           {
-            parent: this.actor,
-            pack: this.actor.pack,
+            parent: actor,
+            pack: actor.pack,
             types,
           },
           { sheet: this },
@@ -1232,7 +1244,7 @@ export function getTidy5eActorSheetQuadroneBase<
           }),
           ...restDataSet,
         },
-        { parent: this.actor, renderSheet: true },
+        { parent: actor, renderSheet: true },
       );
     }
 
@@ -1253,7 +1265,7 @@ export function getTidy5eActorSheetQuadroneBase<
         if (locations.size === 0) {
           continue;
         }
-        const item = this.actor.items.get(id);
+        const item = this.inventorySource.items.get(id);
         if (item) {
           this.expandedItemData.set(
             id,
@@ -1261,6 +1273,25 @@ export function getTidy5eActorSheetQuadroneBase<
           );
         }
       }
+    }
+
+    _getDocumentSubmissionInformation(target: HTMLElement) {
+      const info = super._getDocumentSubmissionInformation(target);
+
+      if (this.inventorySource === this.actor || !info.itemId || info.item) {
+        return info;
+      }
+
+      // Items from another actor's inventory aren't on this sheet's actor. (e.g. the primary vehicle)
+      const item = this.inventorySource.items.get(info.itemId);
+      const activity = item?.system?.activities?.get(info.activityId);
+
+      return {
+        ...info,
+        item,
+        activity,
+        targetDocument: info.effect ?? activity ?? item ?? info.targetDocument,
+      };
     }
 
     /** @override */
@@ -1321,7 +1352,11 @@ export function getTidy5eActorSheetQuadroneBase<
       }
 
       const d = foundry.utils.parseUuid(data.uuid);
-      const t = foundry.utils.parseUuid(this.document.uuid);
+      const t = foundry.utils.parseUuid(
+        data.type === CONSTANTS.DOCUMENT_NAME_ITEM
+          ? this.inventorySource.uuid
+          : this.document.uuid,
+      );
       const base = d.embedded?.length ? 'document' : 'primary';
 
       return d.collection === t.collection &&
@@ -1440,8 +1475,7 @@ export function getTidy5eActorSheetQuadroneBase<
       const { itemId } =
         event.target.closest<HTMLElement>('[data-item-id]')?.dataset ?? {};
 
-      // TODO: inventorySource is a thing with the default sheets, to allow for toggling inventory sources. They use that here.
-      const item = this.document.items.get(itemId);
+      const item = this.inventorySource.items.get(itemId);
 
       TidyHooks.tidy5eSheetsItemHoverOff(event, item);
 
@@ -1693,12 +1727,14 @@ export function getTidy5eActorSheetQuadroneBase<
               ?.getAttribute('data-sort-key') ?? undefined)
           : undefined;
 
-      if (!this.actor.isOwner || behavior === 'none') {
+      const actor = this.inventorySource;
+
+      if (!actor.isOwner || behavior === 'none') {
         return false;
       }
 
       // Handle moving out of container & item sorting
-      if (behavior === 'move' && this.actor.uuid === document.parent?.uuid) {
+      if (behavior === 'move' && actor.uuid === document.parent?.uuid) {
         const removingFromContainer = !isNil(document.system.container);
         if (removingFromContainer) {
           await document.update({ 'system.container': null });
@@ -1707,7 +1743,7 @@ export function getTidy5eActorSheetQuadroneBase<
         const itemData = document.toObject();
 
         const initialSortResult = await FoundryAdapter.onSortItemForActor(
-          this.actor,
+          actor,
           event,
           itemData,
           !removingFromContainer,
@@ -1759,10 +1795,12 @@ export function getTidy5eActorSheetQuadroneBase<
       );
       items = items.filter((i) => !containers.has(i.system.container));
 
+      const actor = this.inventorySource;
+
       // Transform physical items from NPCs to their gear versions
       items = await Promise.all(
         items.map((i) =>
-          i.actor?.system.isNPC && i.actor !== this.actor && i.system.asGear
+          i.actor?.system.isNPC && i.actor !== actor && i.system.asGear
             ? i.system.asGear()
             : i,
         ),
@@ -1786,8 +1824,8 @@ export function getTidy5eActorSheetQuadroneBase<
       });
 
       const created = await dnd5e.documents.Item5e.createDocuments(toCreate, {
-        pack: this.actor.pack,
-        parent: this.actor,
+        pack: actor.pack,
+        parent: actor,
         keepId: true,
       });
 
@@ -1935,7 +1973,7 @@ export function getTidy5eActorSheetQuadroneBase<
       { container = null } = {},
     ): Promise<Item5e> | null {
       return FoundryAdapter.onDropStackConsumablesForActor(
-        this.actor,
+        this.inventorySource,
         itemData,
         { container },
       );
@@ -2015,7 +2053,7 @@ export function getTidy5eActorSheetQuadroneBase<
       event: DragEvent & { currentTarget: HTMLElement },
       document: Folder,
     ): Promise<object | boolean | undefined> {
-      if (!this.actor.isOwner || document.type !== 'Item') {
+      if (!this.inventorySource.isOwner || document.type !== 'Item') {
         return [];
       }
 

@@ -14,6 +14,7 @@ import type {
   BastionOrderQuadroneContext,
   GroupAbility,
   GroupBastionsQuadroneContext,
+  GroupInventorySourceContext,
   GroupMemberBastionQuadroneContext,
   GroupMemberQuadroneContext,
   GroupMemberSection,
@@ -72,6 +73,16 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
     this.currentTabId = CONSTANTS.TAB_MEMBERS;
   }
 
+  /** Shares dnd5e's flag so the default sheet and this one show the same inventory. */
+  get inventorySource(): Actor5e {
+    const source = this.actor.getFlag('dnd5e', 'inventorySource') ?? 'group';
+    const { primaryVehicle } = this.actor.system;
+    if (source === 'vehicle' && primaryVehicle?.isOwner) {
+      return primaryVehicle;
+    }
+    return super.inventorySource;
+  }
+
   static DEFAULT_OPTIONS: Partial<
     ApplicationConfiguration & { dragDrop: Partial<DragDropConfiguration>[] }
   > = {
@@ -84,6 +95,7 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
         Tidy5eGroupSheetQuadrone.#addMemberFacilityOccupant,
       adjustMemberFacilityProgress:
         Tidy5eGroupSheetQuadrone.#adjustMemberFacilityProgress,
+      currency: Tidy5eGroupSheetQuadrone.#currency,
       refreshActor: Tidy5eGroupSheetQuadrone.#refreshActor,
       takeBastionTurn: Tidy5eGroupSheetQuadrone.#takeBastionTurn,
       useMemberFacility: Tidy5eGroupSheetQuadrone.#useMemberFacility,
@@ -176,6 +188,7 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
           ),
         },
       },
+      inventorySource: await this._prepareInventorySourceContext(),
       travel: {
         paces,
         currentPace,
@@ -207,6 +220,18 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
     TidyHooks.tidy5eSheetsPrepareSheetContext(this.document, this, context);
 
     return context;
+  }
+
+  async _prepareInventorySourceContext(): Promise<GroupInventorySourceContext> {
+    const source = this.inventorySource;
+    const isVehicle = source !== this.actor;
+
+    return {
+      canToggle:
+        this.actor.isOwner && !!this.actor.system.primaryVehicle?.isOwner,
+      encumbrance: isVehicle ? await source.system.getEncumbrance() : undefined,
+      isVehicle,
+    };
   }
 
   /**
@@ -923,6 +948,19 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
 
   /* -------------------------------------------- */
 
+  /** Manage currency for whichever inventory is showing. */
+  static async #currency(
+    this: Tidy5eGroupSheetQuadrone,
+    _event: Event,
+    _target: HTMLElement,
+  ) {
+    return new dnd5e.applications.CurrencyManager({
+      document: this.inventorySource,
+    }).render({ force: true });
+  }
+
+  /* -------------------------------------------- */
+
   static async #refreshActor(
     this: Tidy5eGroupSheetQuadrone,
     event: Event,
@@ -1009,6 +1047,25 @@ export class Tidy5eGroupSheetQuadrone extends getTidy5eMultiActorSheetQuadroneBa
           keepId: true,
         }),
     });
+  }
+
+  toggleInventorySource() {
+    const next = this.inventorySource === this.actor ? 'vehicle' : 'group';
+    return this.actor.setFlag('dnd5e', 'inventorySource', next);
+  }
+
+  _getDocumentSubmissionInformation(target: HTMLElement) {
+    const info = super._getDocumentSubmissionInformation(target);
+
+    // Footer currency belongs to whichever inventory is showing.
+    if (
+      info.targetDocument === this.actor &&
+      target.closest('.inventory-footer')
+    ) {
+      return { ...info, targetDocument: this.inventorySource };
+    }
+
+    return info;
   }
 
   changePace(increment: number) {

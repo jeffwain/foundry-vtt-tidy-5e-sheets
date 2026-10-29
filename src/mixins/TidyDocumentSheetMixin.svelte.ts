@@ -1808,7 +1808,9 @@ export function getTidyExtensibleDocumentSheetMixin<
       const { itemId } =
         target.closest<HTMLElement>('[data-item-id]')?.dataset ?? {};
 
-      const actor = this.actor;
+      // Change the group sheet inventory source if it has a primary vehicle set.
+      const actor =
+        (this as { inventorySource?: Actor5e }).inventorySource ?? this.actor;
 
       if (!actor) {
         warn(`No actor found for container ${itemId}.`);
