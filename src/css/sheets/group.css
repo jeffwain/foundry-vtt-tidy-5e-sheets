@@ -65,7 +65,7 @@
         }
 
         .slowed {
-          color: var(--t5e-warning-accent-color);
+          color: var(--t5e-color-palette-orange-70);
         }
 
         .button-icon-only:hover,
@@ -208,7 +208,7 @@
   }
 
   .walk-speed .slowed {
-    color: var(--t5e-warning-accent-color);
+    color: var(--t5e-color-palette-orange-70);
   }
 
   .flexrow.hit-die,
@@ -358,7 +358,7 @@
 
     &.token {
       img {
-        filter: var(--t5e-filter-drop-shadow-token);
+        filter: drop-shadow(0 0 0.1875rem var(--t5e-color-palette-grey-0));
       }
 
       &::before {
@@ -625,6 +625,11 @@
 
       &:hover {
         cursor: pointer;
+      }
+
+      /* Fix square size portrait */
+      .actor-image.square {
+        --t5e-table-avatar-size: 3.125rem;
       }
 
       .progress {
